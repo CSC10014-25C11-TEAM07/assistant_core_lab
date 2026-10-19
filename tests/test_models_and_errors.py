@@ -1,7 +1,9 @@
 import pytest
 from pydantic import ValidationError
-from assistant_core.models import Message, Response, Intent, Source
-from assistant_core.errors import InvalidRequest, AssistantError
+
+from assistant_core.errors import AssistantError, InvalidRequest
+from assistant_core.models import Intent, Message, Response, Source
+
 
 def test_message_valid():
     """Checking valid Message creation."""
