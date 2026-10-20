@@ -1,0 +1,6 @@
+# AI Use Log (LinhNguyen2110)
+
+- **Công cụ sử dụng:** ChatGPT
+- **Mục đích:** Hỗ trợ viết và kiểm thử tính năng `help` cho bài tập H1 trong Lab 3. Tính năng cho phép `AssistantService` nhận diện các câu lệnh `help`, `what can you do?` và `what can you help me with?`, sau đó hướng dẫn người dùng về các chức năng tính học phí, tra cứu văn phòng và tra cứu quy định của trường.
+- **Prompt đã dùng:** "Add a help feature to AssistantService. Recognize the inputs 'help', 'what can you do?', and 'what can you help me with?'. Return a helpful response listing tuition fee calculations, office information, and university rules. Keep the change small and add automated tests."
+- **Đánh giá:** ChatGPT hỗ trợ đề xuất cách triển khai tính năng `help`, viết hai bài kiểm thử và xử lý các lỗi phát sinh trong quá trình chạy thử. Ban đầu, việc kiểm thử gặp lỗi do `router.py` không có hàm `route()` và `responder.py` không có lớp `TemplateResponder`. Sau khi điều chỉnh cách xử lý và cô lập phần kiểm thử, hai test của tính năng `help` và toàn bộ 19 test đều PASS; Ruff cũng báo `All checks passed!`. Tuy nhiên, cần review thủ công vì tính năng hiện chỉ nhận diện ba câu lệnh cụ thể, sử dụng `Intent.UNKNOWN` và chưa xử lý các cách diễn đạt khác như `help me`.
