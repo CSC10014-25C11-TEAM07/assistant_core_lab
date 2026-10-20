@@ -3,4 +3,10 @@
 __pycache__/
 *.pytest_cache/
 .venv/
+<<<<<<< HEAD
+# Quy tắc từ nhánh feat/router
 *.egg-info/
+=======
+# Quy tắc từ origin/main
+...
+>>>>>>> origin/main
