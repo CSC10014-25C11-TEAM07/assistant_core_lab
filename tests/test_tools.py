@@ -7,9 +7,7 @@ from assistant_core.tools import parse_credits, tuition
 
 
 def test_parse_credits_with_retake() -> None:
-    assert parse_credits(
-        "fee for 18 credits and 2 retake"
-    ) == (18, 2)
+    assert parse_credits("fee for 18 credits and 2 retake") == (18, 2)
 
 
 def test_parse_credits_without_retake() -> None:
