@@ -1,6 +1,7 @@
 import logging
-from assistant_core.models import Message, Response, Intent, Source
+
 from assistant_core.errors import ProviderError
+from assistant_core.models import Intent, Message, Response, Source
 
 log = logging.getLogger(__name__)
 
@@ -9,7 +10,7 @@ class AssistantService:
         self.settings, self.offices, self.handbook = settings, offices, handbook
         self.responder = responder
         # Import TemplateResponder here to avoid circular imports before modules are done
-        from assistant_core.responder import TemplateResponder 
+        from assistant_core.responder import TemplateResponder
         self.fallback = TemplateResponder()
 
     def handle(self, msg: Message) -> Response:

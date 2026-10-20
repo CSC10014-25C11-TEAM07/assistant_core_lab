@@ -1,6 +1,7 @@
 import sys
-import logging
+
 from assistant_core.models import Message
+
 
 def main():
     if len(sys.argv) < 2:
