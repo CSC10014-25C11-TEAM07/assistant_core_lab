@@ -9,11 +9,11 @@
 | Number of global variables | 9 (3 mutable) | 0 |
 | Number of bare except: blocks | 3 | 0 |
 | Lines in the longest function | ~65 (handle) | ~15 |
-| How long does it take a new teammate to find the fee logic? | (Điền đánh giá của bạn) | (Điền đánh giá của bạn) |
+| How long does it take a new teammate to find the fee logic? | Slow (mixed inside handle function) | Fast (isolated in tools.py) |
 | Can you swap the LLM without touching the service? | no | yes |
-| ruff check issues | (Điền số lỗi) | 0 |
+| ruff check issues | Many (line length, bare excepts) | 0 |
 
 **Three sentences:**
-1. What improved most: ...
-2. What got more complex: ...
-3. What you would still change: ...
+1. What improved most: The system became highly modular, testable, and secure by isolating logic into separate files, removing global states, and keeping secrets out of the code.
+2. What got more complex: The architecture requires understanding more files, explicit routing logic, and Pydantic models to manage data flow.
+3. What you would still change: I would like to integrate a real LLM provider instead of relying solely on the stub and template fallback.
