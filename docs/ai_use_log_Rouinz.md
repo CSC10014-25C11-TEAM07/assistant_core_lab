@@ -1,0 +1,6 @@
+# AI Use Log (BaoNguyen)
+
+- **Tool used:** Gemini
+- **Purpose:** To assist in writing and testing the `version`. This feature allows the `AssistantService` to recognize inputs such as `version`, `what version are you?`, and `check version`, returning the current version of the `assistant-core` package (v0.3.0).
+- **Prompt used:** "Add a version check feature to AssistantService. Recognize the inputs 'version', 'what version are you?', and 'check version'. Return a response stating 'I am running assistant-core v0.3.0'. Keep the change small and add automated tests using pytest."
+- **Evaluation:** The AI quickly proposed the necessary code for `service.py` and provided test cases using `pytest`. However, it attempted to assign `Intent.VERSION` to the response without updating the `models.py` file (where the `Intent` Enum is defined), resulting in an `AttributeError` during execution. Furthermore, in the test snippet, the AI instantiated `AssistantService` without providing the required mock dependencies (such as `settings` and `offices`), causing a `TypeError`. After I manually added `VERSION` to the `Intent` class and used fixtures to inject the correct dependencies into the tests, the entire test suite passed successfully with no Ruff linting errors.
