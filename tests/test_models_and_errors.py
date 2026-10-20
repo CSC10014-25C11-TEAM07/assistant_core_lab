@@ -13,7 +13,7 @@ def test_message_valid():
 
 
 def test_message_empty_text():
-    """Checking Message raises error with empty text."""
+    """Checking if Message raises error with empty text."""
     with pytest.raises(ValidationError) as exc_info:
         Message(text="")
     assert "String should have at least 1 character" in str(exc_info.value)

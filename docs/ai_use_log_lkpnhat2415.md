@@ -1,0 +1,6 @@
+# AI Use Log (Nhat)
+
+- **Tool used:** ChatGPT (hoặc điền tên công cụ bạn dùng, ví dụ: Copilot, Gemini)
+- **Purpose:** To assist in designing and implementing the `help` feature. This feature enables the `AssistantService` to recognize user requests for assistance (e.g., "help", "what can you do?") and returns a structured list of available capabilities (fees, offices, and rules).
+- **Prompt used:** "Add a 'help' feature to the AssistantService to list what the bot can do. Recognize inputs like 'help' or 'what can you do?'. Return a list of features. Keep it simple and provide tests."
+- **Evaluation:** The AI effectively generated the core logic to detect help requests, but its implementation violated the service architecture. It modified `router.py` to directly return a plain text string instead of utilizing the required `Response` and `Intent` models. Additionally, the AI failed to update the `Intent` Enum in `models.py` to include `Intent.HELP`. I manually refactored the code to adhere to the Single Responsibility Principle by keeping only `Intent.HELP` in the router and moving the Markdown-formatted response generation into `service.py`. I also expanded the AI's single test case by using `@pytest.mark.parametrize` to ensure robustness against various phrasing. After these corrections, the test suite passed and the code met the architectural standards.
