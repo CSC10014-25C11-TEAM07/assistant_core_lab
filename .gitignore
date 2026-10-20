@@ -3,5 +3,5 @@
 __pycache__/
 *.pytest_cache/
 .venv/
-# Quy tắc từ nhánh feat/router
+.ruff_cache/
 *.egg-info/
