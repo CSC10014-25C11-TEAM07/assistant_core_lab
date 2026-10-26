@@ -12,6 +12,7 @@ dependencies = ["pydantic>=2.7,<3", "python-dotenv>=1.0,<2"]
 where = ["src"]
 
 [tool.pytest.ini_options]
+testpaths = ["tests"]
 pythonpath = ["src"]
 
 [tool.ruff]
