@@ -55,6 +55,14 @@ def test_feedback_rating_out_of_range(client):
     assert client.post("/v1/feedback", json={"request_id": "x", "rating": 5}).status_code == 422
 
 
+def test_admin_can_list_feedback_before_any_submission(client):
+    """Exercise T3 even when the T2 feedback creation path is broken."""
+    assert client.get("/v1/feedback").status_code == 401
+    response = client.get("/v1/feedback", headers={"X-API-Key": "secret-admin"})
+    assert response.status_code == 200
+    assert response.json() == []
+
+
 def test_weather_ok(client):
     r = client.get("/v1/weather")
     assert r.status_code == 200 and r.json()["description"] == "overcast"
