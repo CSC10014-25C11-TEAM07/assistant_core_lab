@@ -26,4 +26,4 @@ Từ `lab04/practice`, chạy `python -m pytest -q test_hello_api.py`. Từ `lab
 
 Nhánh nền `test/Lab04-Rouinz` tại `2721f14fb9f502be0a3ddbd70dbdd2a0ad12b816` có core Lab 4 tách biệt với core gốc. Chạy toàn bộ test Lab 3 trên core Lab 4 cho kết quả 58 passed, 8 failed, do khác biệt có sẵn ở kiểm tra dữ liệu knowledge, tên logger và parse RETAKE viết hoa. PR cá nhân này chỉ hoàn thành P1-P5/T1-T4; các phát hiện đó cần được xử lý khi nhóm thống nhất bản tích hợp. Không dùng kết quả 66 passed của core gốc để khẳng định bản core Lab 4 hoàn toàn tương thích.
 
-H2 gồm 5 dòng nằm trong [H2_Rouinz.md](../H2_Rouinz.md), trình bày sự khác nhau giữa gọi service trực tiếp và gọi qua HTTP, cùng lý do nhóm dùng API.
+H2 gồm 5 dòng được trình bày trực tiếp trong mô tả [PR #41](https://github.com/CSC10014-25C11-TEAM07/assistant_core_lab/pull/41).
