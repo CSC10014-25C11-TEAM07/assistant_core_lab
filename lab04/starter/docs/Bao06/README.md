@@ -9,10 +9,10 @@ Môi trường: Python 3.12.13; cài đúng `lab04/starter/requirements.txt`.
 | Phạm vi | Kết quả |
 | --- | --- |
 | P1-P5 | 5 passed |
-| Bộ test Lab 4, gồm ca bổ sung cho T3 | 24 passed, 1 skipped |
+| Bộ test Lab 4, gồm T3, rate limit và offices | 27 passed |
 | Lab 3 gốc | 66 passed |
 
-Ca rate limit được skip sẵn vì thuộc BONUS. Test T3 bổ sung xác nhận admin có thể đọc danh sách rỗng trước khi có feedback; đường POST tạo feedback không che khuất đường GET.
+Đã đồng bộ main tại commit ab26e37 ngày 01/11/2026 và giữ rate limit cùng endpoint offices của nhóm. Ca rate limit hiện chạy và đạt. Test T3 bổ sung xác nhận admin có thể đọc danh sách rỗng trước khi có feedback; đường POST tạo feedback không che khuất đường GET.
 
 Từ `lab04/practice`, chạy `python -m pytest -q test_hello_api.py`. Từ `lab04/starter`, chạy `python -m pytest -q`. Từ gốc repository, chạy `python -m pytest -q` để kiểm tra Lab 3. Chạy riêng từng bộ để tránh nạp nhầm hai package cùng tên `assistant_core`.
 
