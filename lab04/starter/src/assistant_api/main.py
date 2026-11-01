@@ -108,4 +108,8 @@ def create_app(
             raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, "Weather service unavailable") from None
         raise NotImplementedError("T4")
 
+    @app.get("/v1/offices", tags=["knowledge"])
+    def list_offices() -> list[dict[str, str]]:
+        return [office.__dict__ for office in service.offices.all()]
+
     return app
