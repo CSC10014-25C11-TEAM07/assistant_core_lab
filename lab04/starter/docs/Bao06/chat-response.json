@@ -1,0 +1,16 @@
+{
+  "docs_url": "http://127.0.0.1:8765/docs#/chat/chat_v1_chat_post",
+  "request": {
+    "message": "tuition for 18 credits and 2 retake",
+    "session_id": "Bao06-demo"
+  },
+  "status_code": 200,
+  "response": {
+    "answer": "Your tuition is 9,450,000 VND.",
+    "intent": "fee",
+    "sources": [],
+    "degraded": false,
+    "request_id": "b87a6b0c58dc"
+  },
+  "capture": "Actual Swagger UI Execute request against the local FastAPI server; no mocked chat response."
+}
