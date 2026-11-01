@@ -3,15 +3,21 @@
 from __future__ import annotations
 
 import sys
+from typing import Any
 
 from pydantic import ValidationError
+from fastapi import FastAPI, HTTPException
 
 from assistant_core.config import load_settings
 from assistant_core.errors import AssistantError
 from assistant_core.logging_setup import setup_logging
 from assistant_core.models import Message
 from assistant_core.service import build_service
+from assistant_core.knowledge import OfficeDirectory 
 
+
+app = FastAPI(title="Assistant Core API")
+service = build_service(load_settings())
 
 def main(argv: list[str] | None = None) -> int:
     argv = sys.argv[1:] if argv is None else argv
@@ -35,6 +41,10 @@ def main(argv: list[str] | None = None) -> int:
         print(f"  source: {src.id} — {src.title}")
     return 0
 
+@app.get("/v1/offices")
+def list_offices() -> list[dict[str, Any]]:
+    """Return a list of all offices in the directory, sorted by name."""
+    return [o.__dict__ for o in service.offices.all()]
 
 if __name__ == "__main__":
     raise SystemExit(main())

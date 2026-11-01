@@ -81,3 +81,16 @@ def test_weather_stale_cache_when_upstream_fails():
     w.cache_ttl_s = 0  # force a refresh on the second call
     assert not w.current().stale
     assert w.current().stale
+
+
+def test_list_offices_status_200() -> None:
+    """Verify GET /v1/offices returns status code 200."""
+    response = client.get("/v1/offices")
+    assert response.status_code == 200
+
+
+def test_list_offices_contains_library() -> None:
+    """Verify GET /v1/offices returns at least one item named 'Library'."""
+    response = client.get("/v1/offices")
+    data = response.json()
+    assert any(item.get("name") == "Library" for item in data)
