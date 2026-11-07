@@ -1,0 +1,6 @@
+Command: python -m pytest -q test_school_repo.py test_school_repo_integration.py --tb=short
+Working directory: <review-tmp>/tutorial-reference/practice
+Exit code: 0
+
+...............                                                          [100%]
+15 passed in 0.03s
