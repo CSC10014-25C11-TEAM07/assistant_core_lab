@@ -5,4 +5,5 @@
 - H1 đã chạy thực tế trên commit `fdbd652`: `Score: 15/15`; nộp riêng tại PR #56.
 - Test sử dụng dữ liệu giả và SQLite trong memory/thư mục tạm. Các key/salt trong test là giá trị giả cố định.
 - Báo cáo phân biệt kết quả trên main, snapshot R1 và bản tham chiếu tạm dùng kiểm tra bộ test. Không coi mã tham chiếu là phần triển khai đã tích hợp của thành viên khác.
-- Các phần chưa có mã để nghiệm thu (D1-D3, R2, review PR tích hợp, Uvicorn restart đầy đủ) được ghi rõ là đang chờ trong `test_report_giabao1001.md`.
+- Đã review PR #64 của Nhật tại `6c1afec`: checker 15/15, Assistant 27/27 test gốc và 46/46 có QA; tái hiện lỗi Q12 thiếu sắp xếp phụ bằng dữ liệu giả và gửi REQUEST_CHANGES bằng tiếng Anh.
+- D1-D3, review PR tích hợp cuối và Uvicorn restart đầy đủ vẫn được ghi rõ là đang chờ trong `test_report_giabao1001.md`.
