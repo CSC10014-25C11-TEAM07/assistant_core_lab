@@ -33,7 +33,7 @@ ORDER BY name;
 SELECT c.title, COUNT(course_code)
 FROM courses c JOIN enrollments e ON c.code = e.course_code
 GROUP BY course_code
-ORDER BY COUNT(course_code) DESC
+ORDER BY COUNT(course_code) DESC, c.title ASC;
 -- Q13 (names of students with a grade below 5, by name)
 SELECT s.name
 FROM students s JOIN enrollments e ON s.id = e.student_id
