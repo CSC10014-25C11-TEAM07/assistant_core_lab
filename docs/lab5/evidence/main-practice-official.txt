@@ -1,0 +1,11 @@
+Command: python -m pytest -q test_school_repo.py --tb=no
+Working directory: <repo>/lab05/practice
+Exit code: 1
+
+.FFFF                                                                    [100%]
+=========================== short test summary info ============================
+FAILED test_school_repo.py::test_d1_add_student - NotImplementedError
+FAILED test_school_repo.py::test_d1_no_sql_injection - NotImplementedError
+FAILED test_school_repo.py::test_d2_average_grade - NotImplementedError
+FAILED test_school_repo.py::test_d3_transcript - NotImplementedError
+4 failed, 1 passed in 0.01s
