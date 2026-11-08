@@ -1,5 +1,20 @@
 # PR #64 review - Bao04
 
+## Re-review on 2026-11-08
+
+**APPROVED** at commit `86369aa3a9579a932d5e09e7a3968de18c518061`. The Q12 correction adds `c.title ASC` after the descending enrollment count. The previous synthetic case now returns `A first course` before `Computational Thinking` when both courses have five enrollments. The author has resolved the original discussion thread. [Approval](https://github.com/CSC10014-25C11-TEAM07/assistant_core_lab/pull/64#pullrequestreview-5817661200).
+
+| Check on the updated commit | Result | Evidence |
+| --- | --- | --- |
+| H1 checker on the original school fixture | **15/15** | [H1 log](evidence/pr64-86369aa-h1.txt) |
+| Original Assistant suite | **27 passed** | [Official suite](evidence/pr64-86369aa-starter-official.txt) |
+| Assistant plus Bao04's feedback tests | **46 passed** | [Extended suite](evidence/pr64-86369aa-starter-with-qa.txt) |
+| Previous Q12 title tie case | **Passed** | [Regression evidence](evidence/pr64-86369aa-q12-tie.txt) |
+
+These checks ran against an isolated archive of the updated commit. The Tech Lead coordinates H1 selection and R2 integration under the team assignment.
+
+## Initial review on 2026-11-07
+
 Reviewed PR: [H1 and R2 by lkpnhat](https://github.com/CSC10014-25C11-TEAM07/assistant_core_lab/pull/64).
 Author: `lkpnhat2514-glitch`; branch: `60-pyw4---phucnhat445`.
 Reviewer: `giabao1001` (Bao04). Date: 2026-11-07.
@@ -45,4 +60,4 @@ The extended suite covers valid/missing/incorrect API keys, empty feedback, time
 
 The combined PR contains both H1 and R2. Under the team assignment, each member submits H1 separately and the Tech Lead selects only one H1 to merge. The submitted review asks the author to separate H1 from the R2 integration PR or coordinate the H1 selection with the Tech Lead before merging.
 
-Re-review the updated commit after the Q12 fix. No PR was merged during this review.
+The re-review above closes the Q12 finding raised in this initial review.

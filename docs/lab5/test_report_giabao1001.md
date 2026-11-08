@@ -1,11 +1,11 @@
 # Lab 5 - Báo cáo kiểm thử và review tích hợp (Bao04)
 
-Người phụ trách: **Trần Gia Bảo - Bao04 - `giabao1001`**. Ngày kiểm thử: **07/11/2026**.
+Người phụ trách **Trần Gia Bảo - Bao04 - `giabao1001`**. Các lần kiểm thử diễn ra ngày **07-08/11/2026**.
 
 **Kết luận: chưa đủ điều kiện merge bản tích hợp hoặc tạo tag `v0.5-data`.**
-H1 cá nhân đã đạt 15/15. R1 đã được tích hợp qua PR #49 vào main `724c228`. PR #64 của Nhật (`6c1afec`) triển khai R2 và đạt 27/27 test Assistant gốc, 46/46 khi thêm test Bao04. Đã gửi review REQUEST_CHANGES vì Q12 trong phần H1 đi kèm còn thiếu sắp xếp theo tên môn khi bằng số đăng ký. D1-D3 và bản tích hợp cuối vẫn chờ nghiệm thu.
+H1 cá nhân đã đạt 15/15. R1 đã được tích hợp qua PR #49 vào main `724c228`. Ngày 08/11, đã kiểm tra lại PR #64 của Nhật tại commit `86369aa` sau khi sửa Q12. Ca lỗi thứ tự tên môn đã đạt, H1 đạt 15/15, Assistant đạt 27/27 test gốc và 46/46 khi thêm test Bao04. Đã gửi review APPROVED cho commit này. D1-D3 và bản tích hợp cuối vẫn chờ nghiệm thu.
 
-Cập nhật review Nhật: [kết quả và lỗi tái hiện ở PR #64](review_pr64_giabao1001.md). Các số liệu main `945ebbf` bên dưới là kết quả baseline trước khi R1 được merge, không phải trạng thái main mới nhất.
+Kết quả review Nhật và lịch sử sửa Q12 được lưu trong báo cáo riêng. [Review PR #64](review_pr64_giabao1001.md). Các số liệu main `945ebbf` bên dưới ghi lại baseline trước khi R1 được merge.
 
 ## Phạm vi và phiên bản
 
@@ -56,7 +56,7 @@ Hai phép thử persistence có phạm vi riêng: tiến trình mới kiểm tra
 | --- | --- | --- | --- |
 | B04-01 | Chặn nghiệm thu | `school_repo.py`: D1, D2, D3 đều `raise NotImplementedError`; 4/5 test gốc thất bại, gồm injection. | Tân hoàn tất ba hàm, dùng tham số `?`, commit D1, làm tròn D2, JOIN D3; chạy lại cả hai file test. |
 | B04-02 | Đã xử lý | R1 chưa triển khai ở baseline `945ebbf`; nay đã merge qua PR #49 vào `724c228`. | Kiểm thử R1/R2 trên PR #64 đạt 46/46 test. |
-| B04-03 | Đã đạt trên PR, chờ merge | R2 của PR #64 trả danh sách đúng thứ tự, limit và xác thực API key; test độc lập đạt. | Chờ tác giả sửa lỗi H1 Q12 trong PR kết hợp và Tech Lead quyết định tích hợp. |
+| B04-03 | Đã approve PR #64 | Commit `86369aa` đã sửa Q12, đạt ca lỗi cũ và 46/46 test Assistant có QA. | Tech Lead quyết định tích hợp theo phân công. |
 | B04-04 | Đã xử lý | Conflict add/add của PR #49 đã được giải quyết tại `cd5161f`; PR đã merge vào `724c228`. | Bảo toàn R1 khi tích hợp R2 và chạy lại test trên commit cuối. |
 
 Review phần R1 ban đầu ở `65c10e3`: truy vấn kiểm tra interaction trước khi ghi; ID lạ trả `None`; dùng SQLModel `add`, `commit`, `refresh` rồi trả đối tượng. Test độc lập xác nhận POST 201/404, dữ liệu hợp lệ và persistence đều đạt. Lần kiểm tra này chỉ lưu kết quả trong repo. Sau khi R1 được merge, Bao04 đã gửi review REQUEST_CHANGES lên PR #64 cho lỗi sắp xếp Q12; phần R2 không có lỗi chặn được phát hiện.
@@ -110,7 +110,7 @@ Chạy ở root chỉ chạy bộ test Lab 3, không thay thế hai lệnh trên
 - [x] Hoàn tất test bổ sung, log, báo cáo và review sơ bộ R1.
 - [ ] D1-D3 của nhóm đạt 5/5 test gốc và 10/10 test bổ sung.
 - [ ] R1/R2 được tích hợp, Assistant đạt 27/27 test gốc và 19/19 test bổ sung.
-- [x] Review PR R2 #64 trên đúng commit `6c1afec`, lưu log và gửi kết quả lên GitHub.
-- [ ] Review lại Q12 sau khi sửa và diff cuối của PR tích hợp trên đúng commit đã kiểm thử.
+- [x] Review PR R2 #64 và kiểm tra lại Q12 tại commit `86369aa`, lưu log và gửi APPROVED lên GitHub.
+- [ ] Review diff cuối của PR tích hợp trên đúng commit đã kiểm thử.
 - [ ] Kiểm tra API qua Uvicorn: POST 201, ID lạ 404, GET thiếu/sai key 401, key đúng 200; restart server vẫn đọc được feedback.
 - [ ] Cập nhật báo cáo theo commit tích hợp thực tế; Tech Lead chọn một H1, quyết định merge và tạo tag `v0.5-data`.
