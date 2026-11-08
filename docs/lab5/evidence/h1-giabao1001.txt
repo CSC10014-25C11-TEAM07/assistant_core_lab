@@ -1,0 +1,21 @@
+Command: python check.py
+Working directory: <review-tmp>/h1
+Exit code: 0
+
+Q1   OK
+Q2   OK
+Q3   OK
+Q4   OK
+Q5   OK
+Q6   OK
+Q7   OK
+Q8   OK
+Q9   OK
+Q10  OK
+Q11  OK
+Q12  OK
+Q13  OK
+Q14  OK
+Q15  OK
+
+Score: 15/15

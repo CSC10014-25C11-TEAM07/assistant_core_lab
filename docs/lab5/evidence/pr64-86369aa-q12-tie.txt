@@ -1,0 +1,9 @@
+PR: #64
+Head: 86369aa3a9579a932d5e09e7a3968de18c518061
+Case: original Q12 title tie regression.
+Base: school.sql loaded into an in-memory database.
+Added course: ('AAA10000', 'A first course', 3)
+Added five enrollments for students 1 through 5, all with NULL grades.
+Actual: [["A first course", 5], ["Computational Thinking", 5], ["Data Structures and Algorithms", 4], ["Fundamentals of Programming", 4], ["Calculus 1", 2], ["Object-Oriented Programming", 2]]
+Required order: [["A first course", 5], ["Computational Thinking", 5], ["Data Structures and Algorithms", 4], ["Fundamentals of Programming", 4], ["Calculus 1", 2], ["Object-Oriented Programming", 2]]
+Ordering requirement met: True

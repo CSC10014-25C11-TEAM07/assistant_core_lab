@@ -1,0 +1,14 @@
+PR: #64
+Head: 6c1afec3acdc0b34e8e3d47d2ece32ba84ca3124
+Command: python -m pytest -q --tb=short
+Working directory: <pr64-snapshot>/lab05/starter
+Exit code: 0
+
+...........................                                              [100%]
+=============================== warnings summary ===============================
+../../../../..<repo>/.venv/lib/python3.12/site-packages/starlette/testclient.py:40
+  <repo>/.venv/lib/python3.12/site-packages/starlette/testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+27 passed, 1 warning in 1.57s

@@ -1,0 +1,10 @@
+PR: #64
+Head: 6c1afec3acdc0b34e8e3d47d2ece32ba84ca3124
+Case: Q12 must sort equal enrollment counts by course title.
+Base: original school.sql loaded into an in-memory database.
+Added synthetic course: ('AAA10000', 'A first course', 3)
+Added five enrollments: students 1, 2, 3, 4, 5; grades NULL.
+Query: exact Q12 SQL from the reviewed commit.
+Actual: [["Computational Thinking", 5], ["A first course", 5], ["Data Structures and Algorithms", 4], ["Fundamentals of Programming", 4], ["Calculus 1", 2], ["Object-Oriented Programming", 2]]
+Required order: [["A first course", 5], ["Computational Thinking", 5], ["Data Structures and Algorithms", 4], ["Fundamentals of Programming", 4], ["Calculus 1", 2], ["Object-Oriented Programming", 2]]
+Ordering requirement met: False
