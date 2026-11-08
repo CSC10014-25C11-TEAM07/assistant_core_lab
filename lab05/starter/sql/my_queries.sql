@@ -27,3 +27,7 @@ SELECT COUNT(*) AS total_answers,
        ROUND(COALESCE(100.0 * SUM(CASE WHEN degraded = 1 THEN 1 ELSE 0 END)
                       / NULLIF(COUNT(*), 0), 0.0), 2) AS backup_percent
 FROM interaction;
+
+-- Q2 average latency per intent
+
+-- Q3 topics with the most thumbs-down (JOIN feedback with interaction)

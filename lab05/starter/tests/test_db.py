@@ -3,6 +3,9 @@ from datetime import datetime, timezone
 from sqlmodel import Session, select
 
 from assistant_api.db import ChatSession, Feedback, Interaction, Repository, hash_session, init_db, make_engine
+from sqlmodel import Session, select
+
+from assistant_api.db import ChatSession, Interaction, Repository, hash_session, init_db, make_engine
 
 
 def make_repo():
