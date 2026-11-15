@@ -1,0 +1,4 @@
+﻿path                correct  abstain ok  p50 ms  max ms
+deterministic          9/25       7/7     0.0     0.4   fails: E01 E02 E05 E06 E07 E08 E09 E10 E11 E12 E13 E14 E15 E21 E22 E23
+retrieval             20/25       6/7     0.0     0.1   fails: E13 E14 E15 E19 E23
+llm (stub)            20/25       6/7     0.1     0.4   fails: E13 E14 E15 E19 E23

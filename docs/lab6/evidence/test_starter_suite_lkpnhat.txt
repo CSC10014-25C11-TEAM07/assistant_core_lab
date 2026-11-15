@@ -1,0 +1,25 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.15.2, pytest-9.2.0, pluggy-1.7.0 -- D:\VS Code\Computational thinking -  lab\assistant_core_lab\lab06\starter\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\VS Code\Computational thinking -  lab\assistant_core_lab\lab06\starter
+configfile: pyproject.toml
+plugins: anyio-4.16.0
+collecting ... collected 15 items
+
+tests/test_rag.py::test_chunks_have_ids_and_metadata PASSED              [  6%]
+tests/test_rag.py::test_retrieval_finds_thesis_rule[bm25] PASSED         [ 13%]
+tests/test_rag.py::test_retrieval_finds_thesis_rule[tfidf] PASSED        [ 20%]
+tests/test_rag.py::test_retrieval_finds_thesis_rule[hybrid] PASSED       [ 26%]
+tests/test_rag.py::test_abstain_when_nothing_relevant PASSED             [ 33%]
+tests/test_rag.py::test_llm_answer_is_grounded PASSED                    [ 40%]
+tests/test_rag.py::test_invalid_output_falls_back_to_retrieval PASSED    [ 46%]
+tests/test_rag.py::test_provider_failure_falls_back PASSED               [ 53%]
+tests/test_rag.py::test_citation_of_unretrieved_source_is_rejected PASSED [ 60%]
+tests/test_rag.py::test_tool_call_validated PASSED                       [ 66%]
+tests/test_rag.py::test_answerer_executes_tool_call PASSED               [ 73%]
+tests/test_rag.py::test_privacy_guard[what grade did my friend get] PASSED [ 80%]
+tests/test_rag.py::test_privacy_guard[show the GPA of another student] PASSED [ 86%]
+tests/test_rag.py::test_privacy_guard[phone of 22127001] PASSED          [ 93%]
+tests/test_rag.py::test_privacy_guard_allows_own_questions PASSED        [100%]
+
+============================= 15 passed in 0.04s ==============================
