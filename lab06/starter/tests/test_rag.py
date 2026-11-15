@@ -87,3 +87,54 @@ def test_privacy_guard(q):
 
 def test_privacy_guard_allows_own_questions():
     assert not is_private_request("what is my GPA requirement for the thesis")
+
+def test_grounding_accepts_retrieved_source():
+    raw = json.dumps({
+        "answer": "Grounded answer",
+        "source_ids": ["H26#5.3"],
+        "confidence": 0.9,
+        "abstain": False,
+    })
+
+    draft = parse_draft(raw, {"H26#5.3"})
+
+    assert draft.source_ids == ["H26#5.3"]
+    assert draft.abstain is False
+
+
+def test_grounding_rejects_missing_sources():
+    raw = json.dumps({
+        "answer": "Answer without citation",
+        "source_ids": [],
+        "confidence": 0.9,
+        "abstain": False,
+    })
+
+    with pytest.raises(ProviderError, match="answer cites sources that were not retrieved"):
+        parse_draft(raw, {"H26#5.3"})
+
+
+def test_grounding_rejects_mixed_valid_and_invalid_sources():
+    raw = json.dumps({
+        "answer": "Answer with mixed citations",
+        "source_ids": ["H26#5.3", "H26#9.9"],
+        "confidence": 0.9,
+        "abstain": False,
+    })
+
+    with pytest.raises(ProviderError, match="answer cites sources that were not retrieved"):
+        parse_draft(raw, {"H26#5.3"})
+
+
+def test_grounding_allows_abstention_without_sources():
+    raw = json.dumps({
+        "answer": "",
+        "source_ids": [],
+        "confidence": 0.0,
+        "abstain": True,
+    })
+
+    draft = parse_draft(raw, {"H26#5.3"})
+
+    assert draft.abstain is True
+    assert draft.source_ids == []
