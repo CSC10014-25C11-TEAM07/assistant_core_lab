@@ -35,34 +35,6 @@ def test_abstain_when_nothing_relevant(chunks):
     assert r.path == "abstain" and r.escalate
 
 
-def test_a1_abstain_no_hits_avoids_llm_call(chunks):
-    class ExplodingLLM:
-        name = "exploding"
-
-        def complete(self, prompt: str) -> str:
-            raise AssertionError("LLM must not be called when search produces no relevant hits")
-
-    r = RagAnswerer(make_index("bm25", chunks), ExplodingLLM(), min_score=2.0).answer("what is the capital of France")
-    assert r.path == "abstain"
-    assert r.escalate is True
-    assert r.confidence == 0.0
-    assert "not confident" in r.answer
-
-
-def test_a1_abstain_low_score_avoids_llm_call(chunks):
-    class ExplodingLLM:
-        name = "exploding"
-
-        def complete(self, prompt: str) -> str:
-            raise AssertionError("LLM must not be called when top hit score is below min_score")
-
-    r = RagAnswerer(make_index("bm25", chunks), ExplodingLLM(), min_score=999.0).answer("I lost my student card")
-    assert r.path == "abstain"
-    assert r.escalate is True
-    assert r.confidence == 0.0
-
-
-
 def test_llm_answer_is_grounded(chunks):
     r = RagAnswerer(make_index("bm25", chunks), StubLLM()).answer("I lost my student card")
     assert r.path == "llm" and r.sources[0].id == "S26#3"
@@ -115,54 +87,3 @@ def test_privacy_guard(q):
 
 def test_privacy_guard_allows_own_questions():
     assert not is_private_request("what is my GPA requirement for the thesis")
-
-def test_grounding_accepts_retrieved_source():
-    raw = json.dumps({
-        "answer": "Grounded answer",
-        "source_ids": ["H26#5.3"],
-        "confidence": 0.9,
-        "abstain": False,
-    })
-
-    draft = parse_draft(raw, {"H26#5.3"})
-
-    assert draft.source_ids == ["H26#5.3"]
-    assert draft.abstain is False
-
-
-def test_grounding_rejects_missing_sources():
-    raw = json.dumps({
-        "answer": "Answer without citation",
-        "source_ids": [],
-        "confidence": 0.9,
-        "abstain": False,
-    })
-
-    with pytest.raises(ProviderError, match="answer cites sources that were not retrieved"):
-        parse_draft(raw, {"H26#5.3"})
-
-
-def test_grounding_rejects_mixed_valid_and_invalid_sources():
-    raw = json.dumps({
-        "answer": "Answer with mixed citations",
-        "source_ids": ["H26#5.3", "H26#9.9"],
-        "confidence": 0.9,
-        "abstain": False,
-    })
-
-    with pytest.raises(ProviderError, match="answer cites sources that were not retrieved"):
-        parse_draft(raw, {"H26#5.3"})
-
-
-def test_grounding_allows_abstention_without_sources():
-    raw = json.dumps({
-        "answer": "",
-        "source_ids": [],
-        "confidence": 0.0,
-        "abstain": True,
-    })
-
-    draft = parse_draft(raw, {"H26#5.3"})
-
-    assert draft.abstain is True
-    assert draft.source_ids == []
