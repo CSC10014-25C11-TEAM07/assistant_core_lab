@@ -1,0 +1,14 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.14, pytest-8.3.3, pluggy-1.7.0 -- /Users/trangiabao/PycharmProjects/assistant_core_lab/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/trangiabao/PycharmProjects/assistant_core_lab
+configfile: pyproject.toml
+plugins: anyio-4.16.0
+collecting ... collected 4 items
+
+lab06/practice/test_mini_search.py::test_tokenize_given PASSED           [ 25%]
+lab06/practice/test_mini_search.py::test_s1_index PASSED                 [ 50%]
+lab06/practice/test_mini_search.py::test_s2_s3_search PASSED             [ 75%]
+lab06/practice/test_mini_search.py::test_no_match_returns_empty PASSED   [100%]
+
+============================== 4 passed in 0.01s ===============================
