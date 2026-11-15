@@ -1,0 +1,20 @@
+Command: python -m pytest -q test_school_repo.py test_school_repo_integration.py --tb=no
+Working directory: <repo>/lab05/practice
+Exit code: 1
+
+.FFFFFF.FFFFFFF                                                          [100%]
+=========================== short test summary info ============================
+FAILED test_school_repo.py::test_d1_add_student - NotImplementedError
+FAILED test_school_repo.py::test_d1_no_sql_injection - NotImplementedError
+FAILED test_school_repo.py::test_d2_average_grade - NotImplementedError
+FAILED test_school_repo.py::test_d3_transcript - NotImplementedError
+FAILED test_school_repo_integration.py::test_add_student_commits_and_preserves_input[O'Brien]
+FAILED test_school_repo_integration.py::test_add_student_commits_and_preserves_input[x', 1, 'CS'); DROP TABLE students;--]
+FAILED test_school_repo_integration.py::test_average_with_only_null_grades - ...
+FAILED test_school_repo_integration.py::test_average_ignores_null_but_includes_zero_and_rounds[grades0-5.33]
+FAILED test_school_repo_integration.py::test_average_ignores_null_but_includes_zero_and_rounds[grades1-0.0]
+FAILED test_school_repo_integration.py::test_average_course_code_treats_injection_as_data
+FAILED test_school_repo_integration.py::test_transcript_missing_or_injected_id_returns_empty[999]
+FAILED test_school_repo_integration.py::test_transcript_missing_or_injected_id_returns_empty[2 OR 1=1]
+FAILED test_school_repo_integration.py::test_transcript_keeps_different_courses_with_the_same_title
+13 failed, 2 passed in 0.02s

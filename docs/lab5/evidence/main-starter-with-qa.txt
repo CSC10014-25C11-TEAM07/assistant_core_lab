@@ -1,0 +1,27 @@
+Command: python -m pytest -q --tb=no
+Working directory: <repo>/lab05/starter
+Exit code: 1
+
+....F......FFFF.....FFFFFF..FFF...............                           [100%]
+=============================== warnings summary ===============================
+../../.venv/lib/python3.12/site-packages/starlette/testclient.py:40
+  <repo>/.venv/lib/python3.12/site-packages/starlette/testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_api.py::test_feedback_roundtrip - NotImplementedError: R1
+FAILED tests/test_db.py::test_feedback_requires_existing_interaction - NotImp...
+FAILED tests/test_feedback_integration.py::test_r1_api_saves_each_valid_rating[-1]
+FAILED tests/test_feedback_integration.py::test_r1_api_saves_each_valid_rating[0]
+FAILED tests/test_feedback_integration.py::test_r1_api_saves_each_valid_rating[1]
+FAILED tests/test_feedback_integration.py::test_r1_commit_survives_engine_close_and_new_process
+FAILED tests/test_feedback_integration.py::test_r2_repository_empty - NotImpl...
+FAILED tests/test_feedback_integration.py::test_r2_repository_orders_by_timestamp_and_limits[0-expected0]
+FAILED tests/test_feedback_integration.py::test_r2_repository_orders_by_timestamp_and_limits[1-expected1]
+FAILED tests/test_feedback_integration.py::test_r2_repository_orders_by_timestamp_and_limits[2-expected2]
+FAILED tests/test_feedback_integration.py::test_r2_repository_orders_by_timestamp_and_limits[100-expected3]
+FAILED tests/test_feedback_integration.py::test_r2_api_accepts_valid_key_with_empty_database
+FAILED tests/test_feedback_integration.py::test_r2_api_limits_and_serializes_without_r1
+FAILED tests/test_feedback_integration.py::test_r1_r2_api_persists_after_application_and_engine_restart
+14 failed, 32 passed, 1 warning in 1.97s

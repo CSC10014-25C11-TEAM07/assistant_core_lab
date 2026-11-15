@@ -1,0 +1,10 @@
+# Lab 5 - AI use log (Bao04 / giabao1001)
+
+- Công cụ: OpenAI Codex.
+- Phạm vi hỗ trợ: đọc bảng phân công và tutorial được cung cấp; soạn H1 Q1-Q15; bổ sung test D1-D3/R1-R2; chạy checker/pytest/Ruff; đối chiếu R1 của PR #49 với main và viết báo cáo.
+- H1 đã chạy thực tế trên commit `fdbd652`: `Score: 15/15`; nộp riêng tại PR #56.
+- Test sử dụng dữ liệu giả và SQLite trong memory/thư mục tạm. Các key/salt trong test là giá trị giả cố định.
+- Báo cáo phân biệt kết quả trên main, snapshot R1 và bản tham chiếu tạm dùng kiểm tra bộ test. Không coi mã tham chiếu là phần triển khai đã tích hợp của thành viên khác.
+- Đã review PR #64 của Nhật tại `6c1afec`: checker 15/15, Assistant 27/27 test gốc và 46/46 có QA; tái hiện lỗi Q12 thiếu sắp xếp phụ bằng dữ liệu giả và gửi REQUEST_CHANGES bằng tiếng Anh.
+- Ngày 08/11/2026 đã kiểm tra lại commit `86369aa`. Q12 đạt ca lỗi cũ, checker đạt 15/15, Assistant đạt 27/27 test gốc và 46/46 có QA. Đã gửi APPROVED bằng tiếng Anh và lưu các log kiểm thử mới.
+- D1-D3, review PR tích hợp cuối và Uvicorn restart đầy đủ vẫn được ghi rõ là đang chờ trong `test_report_giabao1001.md`.

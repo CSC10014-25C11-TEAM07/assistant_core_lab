@@ -1,0 +1,15 @@
+Command: python -m pytest -q tests/test_api.py tests/test_db.py tests/test_router.py tests/test_service.py tests/test_tools.py --tb=no
+Working directory: <repo>/lab05/starter
+Exit code: 1
+
+....F......F...............                                              [100%]
+=============================== warnings summary ===============================
+../../.venv/lib/python3.12/site-packages/starlette/testclient.py:40
+  <repo>/.venv/lib/python3.12/site-packages/starlette/testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_api.py::test_feedback_roundtrip - NotImplementedError: R1
+FAILED tests/test_db.py::test_feedback_requires_existing_interaction - NotImp...
+2 failed, 25 passed, 1 warning in 1.66s
