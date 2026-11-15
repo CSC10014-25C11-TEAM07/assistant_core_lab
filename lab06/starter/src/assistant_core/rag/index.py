@@ -1,8 +1,8 @@
 """Two small retrieval indexes with the same interface.
 
-BM25Index   — keyword ranking (the classic IR baseline)
-TfidfIndex  — cosine similarity of TF-IDF vectors (a toy stand-in for embeddings)
-HybridIndex — reciprocal-rank fusion of both
+BM25Index   â€” keyword ranking (the classic IR baseline)
+TfidfIndex  â€” cosine similarity of TF-IDF vectors (a toy stand-in for embeddings)
+HybridIndex â€” reciprocal-rank fusion of both
 
 In a real system you would swap TfidfIndex for dense embeddings in FAISS or Chroma;
 the interface `search(query, k) -> list[Hit]` stays the same.
@@ -24,7 +24,12 @@ STOP = frozenset(
 
 
 def tokenize(text: str) -> list[str]:
-    return [t for t in re.findall(r"\w+", text.lower()) if t not in STOP]
+    tokens = re.findall(r"\w+", text.lower())
+    return [
+        token[:-1] if len(token) > 4 and token.endswith("s") else token
+        for token in tokens
+        if token not in STOP
+    ]
 
 
 @dataclass(frozen=True)
