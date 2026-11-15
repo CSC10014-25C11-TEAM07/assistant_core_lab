@@ -35,6 +35,34 @@ def test_abstain_when_nothing_relevant(chunks):
     assert r.path == "abstain" and r.escalate
 
 
+def test_a1_abstain_no_hits_avoids_llm_call(chunks):
+    class ExplodingLLM:
+        name = "exploding"
+
+        def complete(self, prompt: str) -> str:
+            raise AssertionError("LLM must not be called when search produces no relevant hits")
+
+    r = RagAnswerer(make_index("bm25", chunks), ExplodingLLM(), min_score=2.0).answer("what is the capital of France")
+    assert r.path == "abstain"
+    assert r.escalate is True
+    assert r.confidence == 0.0
+    assert "not confident" in r.answer
+
+
+def test_a1_abstain_low_score_avoids_llm_call(chunks):
+    class ExplodingLLM:
+        name = "exploding"
+
+        def complete(self, prompt: str) -> str:
+            raise AssertionError("LLM must not be called when top hit score is below min_score")
+
+    r = RagAnswerer(make_index("bm25", chunks), ExplodingLLM(), min_score=999.0).answer("I lost my student card")
+    assert r.path == "abstain"
+    assert r.escalate is True
+    assert r.confidence == 0.0
+
+
+
 def test_llm_answer_is_grounded(chunks):
     r = RagAnswerer(make_index("bm25", chunks), StubLLM()).answer("I lost my student card")
     assert r.path == "llm" and r.sources[0].id == "S26#3"

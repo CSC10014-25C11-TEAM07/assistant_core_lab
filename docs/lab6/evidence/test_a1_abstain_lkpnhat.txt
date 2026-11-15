@@ -1,0 +1,13 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.15.2, pytest-9.2.0, pluggy-1.7.0 -- D:\VS Code\Computational thinking -  lab\assistant_core_lab\lab06\starter\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\VS Code\Computational thinking -  lab\assistant_core_lab\lab06\starter
+configfile: pyproject.toml
+plugins: anyio-4.16.0
+collecting ... collected 17 items / 14 deselected / 3 selected
+
+tests/test_rag.py::test_abstain_when_nothing_relevant PASSED             [ 33%]
+tests/test_rag.py::test_a1_abstain_no_hits_avoids_llm_call PASSED        [ 66%]
+tests/test_rag.py::test_a1_abstain_low_score_avoids_llm_call PASSED      [100%]
+
+====================== 3 passed, 14 deselected in 0.07s =======================
