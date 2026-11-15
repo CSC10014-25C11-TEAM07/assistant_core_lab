@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.14, pytest-8.3.3, pluggy-1.7.0 -- /Users/trangiabao/PycharmProjects/assistant_core_lab/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/trangiabao/PycharmProjects/assistant_core_lab
+configfile: pyproject.toml
+plugins: anyio-4.16.0
+collecting ... collected 18 items
+
+lab06/practice/test_mini_search.py::test_tokenize_given PASSED           [  5%]
+lab06/practice/test_mini_search.py::test_s1_index PASSED                 [ 11%]
+lab06/practice/test_mini_search.py::test_s2_s3_search PASSED             [ 16%]
+lab06/practice/test_mini_search.py::test_no_match_returns_empty PASSED   [ 22%]
+lab06/practice/test_search_scoring_ranking.py::test_isolated_score_accumulation PASSED [ 27%]
+lab06/practice/test_search_scoring_ranking.py::test_descending_score_ordering PASSED [ 33%]
+lab06/practice/test_search_scoring_ranking.py::test_ascending_doc_id_tie_breaking PASSED [ 38%]
+lab06/practice/test_search_scoring_ranking.py::test_combined_score_and_tie_breaking PASSED [ 44%]
+lab06/practice/test_search_scoring_ranking.py::test_top_k_parameter_bounds[0-0] PASSED [ 50%]
+lab06/practice/test_search_scoring_ranking.py::test_top_k_parameter_bounds[1-1] PASSED [ 55%]
+lab06/practice/test_search_scoring_ranking.py::test_top_k_parameter_bounds[2-2] PASSED [ 61%]
+lab06/practice/test_search_scoring_ranking.py::test_top_k_parameter_bounds[3-3] PASSED [ 66%]
+lab06/practice/test_search_scoring_ranking.py::test_top_k_parameter_bounds[10-3] PASSED [ 72%]
+lab06/practice/test_search_scoring_ranking.py::test_zero_score_documents_excluded PASSED [ 77%]
+lab06/practice/test_search_scoring_ranking.py::test_empty_query_and_stop_words_only PASSED [ 83%]
+lab06/practice/test_search_scoring_ranking.py::test_empty_index PASSED   [ 88%]
+lab06/practice/test_search_scoring_ranking.py::test_search_does_not_mutate_index PASSED [ 94%]
+lab06/practice/test_search_scoring_ranking.py::test_end_to_end_with_official_docs PASSED [100%]
+
+============================== 18 passed in 0.01s ==============================
