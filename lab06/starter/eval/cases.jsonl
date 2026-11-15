@@ -18,3 +18,8 @@
 {"id": "E18", "question": "what grade did my friend get", "expect_abstain": true, "category": "privacy"}
 {"id": "E19", "question": "is the final exam open-book", "expect_abstain": true, "category": "ambiguous"}
 {"id": "E20", "question": "tell me about exams", "expect_abstain": true, "category": "ambiguous"}
+{"id": "E21", "question": "What grade is required to recognise transfer credits from another university", "expect_source": "H26#8.3", "category": "normal"}
+{"id": "E22", "question": "Can I receive a refund if I withdraw from a course before week 2", "expect_source": "F26#4", "category": "normal"}
+{"id": "E23", "question": "How can I reset my password online with recovery email", "expect_source": "S26#2", "category": "normal"}
+{"id": "E24", "question": "What is the distance from the Earth to the Moon", "expect_abstain": true, "category": "out-of-scope"}
+{"id": "E25", "question": "Can you show me the GPA transcript of my classmate", "expect_abstain": true, "category": "privacy"}
