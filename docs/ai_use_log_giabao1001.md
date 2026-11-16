@@ -18,3 +18,16 @@
 - **Xử lý mã nguồn theo quy định nhóm:**
   - Toàn bộ quá trình sinh mã và thử nghiệm tính năng H1 được thực hiện trong môi trường độc lập.
   - Sau khi kiểm thử đạt 3/3 test và ghi nhận báo cáo, mã nguồn thử nghiệm AI đã được loại bỏ khỏi cây mã nguồn chính thức để giữ Pull Request sạch sẽ, chỉ bao gồm module `responder.py`, `tests/test_responder.py` và 3 tệp báo cáo cá nhân.
+
+---
+
+## Lab 06 — S2–S3 Acceptance Testing & Bao06 Review
+
+- **Công cụ hỗ trợ:** Antigravity / Claude Code
+- **Mục đích sử dụng:**
+  1. Hỗ trợ thiết kế bộ kiểm thử độc lập cho S2–S3 (`test_search_scoring_ranking.py`) nhằm kiểm chứng việc tính điểm, sắp xếp thứ tự và xử lý hòa điểm (tie-breaking) không bị phụ thuộc vào S1.
+  2. Hỗ trợ phân tích chi tiết thực nghiệm H3 của Bao06 (PR #79) và tái hiện nguyên nhân gây ra regression trên câu hỏi E20.
+- **Kiểm chứng độc lập:**
+  - Bộ kiểm thử S2–S3: 14/14 test đạt.
+  - Tổng hợp toàn bộ practice Mini Search: 18/18 test đạt.
+  - Tái hiện chính xác kết quả thực nghiệm H3 trên commit `c4e23db`: E14 vẫn fail và E20 giảm độ chính xác từ chối.
