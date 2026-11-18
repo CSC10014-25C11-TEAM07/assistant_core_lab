@@ -4,7 +4,7 @@ Run it:
     uvicorn hello_api:app --reload
 Then open http://127.0.0.1:8000/docs in your browser.
 
-Exercises P1–P5 are in README.md. Each one adds a few lines at the marked place.
+Exercises P1–P5 cover routes, path/query parameters, JSON bodies, and HTTP errors.
 """
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -21,15 +21,13 @@ def home() -> dict:
 # P2: a path parameter. Visit http://127.0.0.1:8000/hello/Lan
 @app.get("/hello/{name}")
 def hello(name: str) -> dict:
-    # TODO P2: return {"message": "Hello, <name>!"}
-    return {"message":f"Hello, {name}!"}
+    return {"message": f"Hello, {name}!"}
 
 
 # P3: a query parameter. Visit http://127.0.0.1:8000/square?n=7
 @app.get("/square")
 def square(n: int) -> dict:
-    # TODO P3: return {"n": n, "square": n * n}
-    return {"n": n, "square": n*n}
+    return {"n": n, "square": n * n}
 
 
 # P4: a request body. Send JSON {"a": 2, "b": 3} with POST.
@@ -37,14 +35,15 @@ class Numbers(BaseModel):
     a: float
     b: float
 
+
 @app.post("/add")
 def add(nums: Numbers) -> dict:
-    # TODO P4: return {"sum": nums.a + nums.b}
     return {"sum": nums.a + nums.b}
 
 
 # P5: errors. Visit http://127.0.0.1:8000/courses/CSC10014 and /courses/XYZ
 COURSES = {"CSC10014": "Computational Thinking", "CSC10001": "Fundamentals of Programming"}
+
 
 @app.get("/courses/{code}")
 def course(code: str) -> dict:
