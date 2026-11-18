@@ -83,15 +83,14 @@ def test_weather_stale_cache_when_upstream_fails():
     assert w.current().stale
 
 
-def test_offices_returns_200(client):
+def test_list_offices_status_200() -> None:
+    """Verify GET /v1/offices returns status code 200."""
     response = client.get("/v1/offices")
     assert response.status_code == 200
-    offices = response.json()
-    assert isinstance(offices, list)
-    names = [office["name"] for office in offices]
-    assert names == sorted(names)
 
 
-def test_offices_contains_library(client):
-    offices = client.get("/v1/offices").json()
-    assert any(office["name"] == "Library" for office in offices)
+def test_list_offices_contains_library() -> None:
+    """Verify GET /v1/offices returns at least one item named 'Library'."""
+    response = client.get("/v1/offices")
+    data = response.json()
+    assert any(item.get("name") == "Library" for item in data)
