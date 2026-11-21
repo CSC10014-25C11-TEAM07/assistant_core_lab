@@ -9,7 +9,7 @@ feedback_app = (AppTest(
             }
         )
     }
-), <test_feedback_ui_acceptance.FeedbackClient object at 0x10b50bfb0>)
+), <test_feedback_ui_acceptance.FeedbackClient object at 0x109ba1e50>)
 
     def test_both_answers_have_independent_positive_and_negative_controls(feedback_app):
         app, _client = feedback_app
@@ -21,8 +21,8 @@ E        +    where [] = feedback_buttons(AppTest(\n    _script_path='/private/t
 
 tests/test_feedback_ui_acceptance.py:52: AssertionError
 ---------------------------- Captured stderr setup -----------------------------
-2026-11-21 15:54:58.786 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-11-21 15:54:58.787 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.265 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.266 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 _ test_successful_vote_targets_correct_answer_and_hides_on_next_render[\U0001f44e--1] _
 
 feedback_app = (AppTest(
@@ -32,7 +32,7 @@ feedback_app = (AppTest(
             }
         )
     }
-), <test_feedback_ui_acceptance.FeedbackClient object at 0x10b4ee510>)
+), <test_feedback_ui_acceptance.FeedbackClient object at 0x109ad5760>)
 label = '👎', rating = -1
 
     @pytest.mark.parametrize(("label", "rating"), [("👍", 1), ("👎", -1)])
@@ -45,8 +45,8 @@ E       assert []
 
 tests/test_feedback_ui_acceptance.py:62: AssertionError
 ---------------------------- Captured stderr setup -----------------------------
-2026-11-21 15:54:58.853 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-11-21 15:54:58.853 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.329 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.329 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 _______ test_failed_feedback_preserves_retry_and_does_not_claim_success ________
 
 feedback_app = (AppTest(
@@ -56,7 +56,7 @@ feedback_app = (AppTest(
             }
         )
     }
-), <test_feedback_ui_acceptance.FeedbackClient object at 0x10b4ac410>)
+), <test_feedback_ui_acceptance.FeedbackClient object at 0x109b34f80>)
 
     def test_failed_feedback_preserves_retry_and_does_not_claim_success(feedback_app):
         app, client = feedback_app
@@ -78,10 +78,10 @@ E         {'marked_rated': True} != {'marked_rated': False}
 E         {'thanks_shown': True} != {'thanks_shown': False}
 E         Use -v to get more diff
 
-tests/test_feedback_ui_acceptance.py:89: AssertionError
+tests/test_feedback_ui_acceptance.py:104: AssertionError
 ---------------------------- Captured stderr setup -----------------------------
-2026-11-21 15:54:58.857 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-11-21 15:54:58.857 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.335 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.336 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 _____________________________ test_format_sources ______________________________
 
     def test_format_sources():
@@ -132,4 +132,4 @@ FAILED tests/test_feedback_ui_acceptance.py::test_successful_vote_targets_correc
 FAILED tests/test_feedback_ui_acceptance.py::test_failed_feedback_preserves_retry_and_does_not_claim_success
 FAILED tests/test_ui.py::test_format_sources - NotImplementedError: L1
 FAILED tests/test_ui.py::test_status_note - NotImplementedError: L2
-5 failed, 48 passed, 1 warning in 1.69s
+5 failed, 48 passed, 1 warning in 1.68s

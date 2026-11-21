@@ -62,6 +62,13 @@ def test_successful_vote_targets_correct_answer_and_hides_on_next_render(feedbac
     assert controls, f"Missing {label} control"
     target_index = 0 if rating == 1 else 1
     request_id = "answer-one" if rating == 1 else "answer-two"
+    target_message = 1 if rating == 1 else 2
+    other_message = 2 if rating == 1 else 1
+    other_controls = {
+        button.label: button.key
+        for button in app.chat_message[other_message].button
+        if button.label in {"👍", "👎"}
+    }
     controls[target_index].click().run()
     assert not app.exception
     assert client.calls == [(request_id, rating, None)]
@@ -71,7 +78,15 @@ def test_successful_vote_targets_correct_answer_and_hides_on_next_render(feedbac
     # Inspect a clean render; immediate disappearance still requires a browser check.
     app.run()
     assert not app.exception
-    assert len(feedback_buttons(app, label)) == 1, "The other answer must remain independently rateable"
+    assert not [
+        button for button in app.chat_message[target_message].button if button.label in {"👍", "👎"}
+    ], "Both controls of the rated answer must disappear on the next render"
+    remaining_controls = {
+        button.label: button.key
+        for button in app.chat_message[other_message].button
+        if button.label in {"👍", "👎"}
+    }
+    assert remaining_controls == other_controls, "The other answer must remain independently rateable"
     assert client.calls == [(request_id, rating, None)], "Rendering must not resubmit a vote"
 
 
@@ -87,3 +102,14 @@ def test_failed_feedback_preserves_retry_and_does_not_claim_success(feedback_app
         "positive_controls": len(feedback_buttons(app, "👍")),
     }
     assert actual == {"marked_rated": False, "thanks_shown": False, "positive_controls": 2}
+    app.run()
+    retry_controls = [button for button in app.chat_message[1].button if button.label == "👍"]
+    assert retry_controls and not retry_controls[0].disabled, "Rejected feedback must remain retryable"
+    client.accept_feedback = True
+    retry_controls[0].click().run()
+    assert not app.exception
+    assert client.calls == [("answer-one", 1, None), ("answer-one", 1, None)]
+    assert app.session_state["rated"] == {"answer-one"}
+    assert any("Thanks" in toast.value for toast in app.toast)
+    app.run()
+    assert not [button for button in app.chat_message[1].button if button.label in {"👍", "👎"}]

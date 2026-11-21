@@ -9,7 +9,7 @@ feedback_app = (AppTest(
             }
         )
     }
-), <test_feedback_ui_acceptance.FeedbackClient object at 0x10c067980>)
+), <test_feedback_ui_acceptance.FeedbackClient object at 0x10c960920>)
 
     def test_both_answers_have_independent_positive_and_negative_controls(feedback_app):
         app, _client = feedback_app
@@ -21,8 +21,8 @@ E        +    where [] = feedback_buttons(AppTest(\n    _script_path='/private/t
 
 tests/test_feedback_ui_acceptance.py:52: AssertionError
 ---------------------------- Captured stderr setup -----------------------------
-2026-11-21 15:50:57.912 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-11-21 15:50:57.912 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.748 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.748 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 _ test_successful_vote_targets_correct_answer_and_hides_on_next_render[\U0001f44e--1] _
 
 feedback_app = (AppTest(
@@ -32,7 +32,7 @@ feedback_app = (AppTest(
             }
         )
     }
-), <test_feedback_ui_acceptance.FeedbackClient object at 0x10c0a2810>)
+), <test_feedback_ui_acceptance.FeedbackClient object at 0x10c9a6840>)
 label = '👎', rating = -1
 
     @pytest.mark.parametrize(("label", "rating"), [("👍", 1), ("👎", -1)])
@@ -45,8 +45,8 @@ E       assert []
 
 tests/test_feedback_ui_acceptance.py:62: AssertionError
 ---------------------------- Captured stderr setup -----------------------------
-2026-11-21 15:50:57.959 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-11-21 15:50:57.959 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.808 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.809 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 _______ test_failed_feedback_preserves_retry_and_does_not_claim_success ________
 
 feedback_app = (AppTest(
@@ -56,7 +56,7 @@ feedback_app = (AppTest(
             }
         )
     }
-), <test_feedback_ui_acceptance.FeedbackClient object at 0x10c0e5f40>)
+), <test_feedback_ui_acceptance.FeedbackClient object at 0x10c8673e0>)
 
     def test_failed_feedback_preserves_retry_and_does_not_claim_success(feedback_app):
         app, client = feedback_app
@@ -78,12 +78,12 @@ E         {'marked_rated': True} != {'marked_rated': False}
 E         {'thanks_shown': True} != {'thanks_shown': False}
 E         Use -v to get more diff
 
-tests/test_feedback_ui_acceptance.py:89: AssertionError
+tests/test_feedback_ui_acceptance.py:104: AssertionError
 ---------------------------- Captured stderr setup -----------------------------
-2026-11-21 15:50:57.963 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-11-21 15:50:57.963 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.814 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.814 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 =========================== short test summary info ============================
 FAILED tests/test_feedback_ui_acceptance.py::test_both_answers_have_independent_positive_and_negative_controls
 FAILED tests/test_feedback_ui_acceptance.py::test_successful_vote_targets_correct_answer_and_hides_on_next_render[\U0001f44e--1]
 FAILED tests/test_feedback_ui_acceptance.py::test_failed_feedback_preserves_retry_and_does_not_claim_success
-3 failed, 1 passed in 0.15s
+3 failed, 1 passed in 0.16s

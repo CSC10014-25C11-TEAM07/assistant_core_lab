@@ -7,8 +7,10 @@ actual observations without treating unimplemented or untested states as passes.
 
 ## Scope and assignment
 
-Sources: `CSC10014_2026_Lab07_UI_Fullstack_Tutorial.docx.pdf`, pp.12–16, and
-`Phan_cong_Lab07.docx`, section I (paths relative to `lab07/`).
+Sources supplied in `/Users/trangiabao/Downloads/`:
+`CSC10014_2026_Lab07_UI_Fullstack_Tutorial.docx.pdf`, pp.12–16, and
+`Phan_cong_Lab07.docx`, section I. The assignment's work paths are relative to
+the repository's `lab07/` directory.
 
 - Bao04: D.4, Part E, phone-width checks, checklist and reproducible failures; review Bao06's F1. Bao06 reviews this QA contribution.
 - Nhật: L1/L2; Bao06: F1; Linh: U1–U4; Hân: H2; Tân: H1; Đăng: integration, final verification, README and `v0.7-mvp`.
