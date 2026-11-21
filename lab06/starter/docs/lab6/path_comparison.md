@@ -1,24 +1,24 @@
-# Lab 06 Path Comparison
+# Lab06 — Part F: Path Comparison
+## 1. Kết quả đánh giá
 
-Bộ đánh giá gồm 20 câu hỏi, trong đó có 5 câu cần từ chối.
+Chạy lệnh:
 
-| Cách trả lời | Đúng | Từ chối đúng | p50 (ms) | Max (ms) |
-|---|---:|---:|---:|---:|
-| Deterministic | 7/20 | 5/5 | 0.0 | 0.6 |
-| Retrieval | 16/20 | 4/5 | 0.0 | 0.1 |
-| LLM (stub) | 16/20 | 4/5 | 0.2 | 0.6 |
+`python eval/compare_paths.py`
 
-1. Mình chọn retrieval cho các câu hỏi về sổ tay sinh viên.
-2. Trong lần chạy này, retrieval đúng 16/20 câu, bằng LLM stub, và có thời gian phản hồi trung vị thấp hơn.
-3. Mình sẽ ưu tiên sửa E19 vì hệ thống vẫn trả lời câu hỏi về thi mở sách dù tài liệu truy xuất không đủ để kết luận.
-## H1 — Đánh giá sau khi thêm 5 câu
-
-Bộ đánh giá hiện có 25 câu, trong đó 7 câu cần từ chối.
-
-| Cách trả lời | Đúng | Từ chối đúng | p50 (ms) | Max (ms) |
-|---|---:|---:|---:|---:|
+| Path | Correct | Abstain OK | p50 (ms) | Max (ms) |
+|---|---|---|---|---|
 | Deterministic | 9/25 | 7/7 | 0.0 | 0.6 |
 | Retrieval | 20/25 | 6/7 | 0.0 | 0.1 |
-| LLM (stub) | 20/25 | 6/7 | 0.2 | 0.5 |
+| LLM (stub) | 20/25 | 6/7 | 0.2 | 0.7 |
 
-Trong 5 câu mới, E23 thất bại ở cả ba cách vì router chuyển câu hỏi về phí cấp lại thẻ sinh viên sang luồng tính học phí, nên trợ lý hỏi số tín chỉ thay vì lấy thông tin từ mục `S26#3`.
+## 2. Các trường hợp chưa đạt
+
+- **Deterministic:** E01, E02, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E21, E22, E23.
+- **Retrieval:** E13, E14, E15, E19, E23.
+- **LLM (stub):** E13, E14, E15, E19, E23.
+
+## 3. Nhận xét (3 câu)
+
+1. Đối với handbook, nên ưu tiên phương pháp Retrieval vì đạt 20/25 câu đúng, cao hơn Deterministic (9/25), đồng thời có độ trễ thấp trong lần đánh giá này.
+2. Phương pháp LLM (stub) cũng đạt 20/25 câu đúng nhưng có độ trễ cao hơn Retrieval, trong khi Deterministic xử lý tốt cả 7/7 trường hợp cần từ chối.
+3. Lỗi cần ưu tiên khắc phục là trường hợp từ chối chưa chính xác của Retrieval và LLM (stub), đồng thời kiểm tra các câu E13, E14, E15, E19 và E23 để cải thiện khả năng truy xuất thông tin.
