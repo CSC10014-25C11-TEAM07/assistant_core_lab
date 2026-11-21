@@ -15,6 +15,11 @@ or pending check as explained below; this is not MVP acceptance.
 - [ ] Text is readable (size, contrast); buttons have clear labels — **PARTIAL:** main text/input are 16 px and examples have text labels, but the 14 px AI disclosure is pale (measured contrast 2.12:1).
 - [ ] Works on a phone-width window — **PARTIAL:** initial layout, sidebar and backend-down error inspected at 390 × 844; initial layout also inspected at 320 × 768. No document overflow at either width. Successful chat/feedback cannot be accepted until L1/L2/F1 are integrated.
 
+Follow-up: Nhật's proposed L1/L2 PR #108 (`26ece65`) passes 49 official starter
+tests and successfully renders the thesis/source and France escalation in a
+normal browser flow, including the thesis answer at 390 px. It is not merged;
+the checkboxes above still describe tested main `24333b9`. F1 remains incomplete.
+
 Full results, reproduction steps, owners and screenshots:
 [Bao04 QA report](../starter/docs/lab7/usability_qa_giabao1001.md).
 

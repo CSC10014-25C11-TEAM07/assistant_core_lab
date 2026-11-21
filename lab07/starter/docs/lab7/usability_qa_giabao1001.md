@@ -181,3 +181,28 @@ second copy of the original UI on port 18508 with
 3. Improve disclosure readability; repeat the successful answer/feedback flow at both phone widths.
 4. Conduct E.3 with a classmate outside the team for two minutes without coaching; record one authentic surprise. Tân's separate H1 ten-minute test remains his assigned work.
 5. Bao06 reviews this QA PR; Đăng owns final test acceptance, integration and the MVP tag.
+
+## Follow-up: Nhật's proposed L1/L2 fix
+
+PR [#108](https://github.com/CSC10014-25C11-TEAM07/assistant_core_lab/pull/108)
+appeared during this audit. Its exact head
+`26ece656e25b34357c52c7908c92dc4444e1d576` was checked out separately, without
+modifying this QA branch. Main was still `24333b9`. These are **proposed-fix
+results**, not a statement that the implementation has merged or the checklist
+on main is fully accepted.
+
+- All **49 official starter tests passed**: [log](evidence/pr108_official_starter_pytest.txt).
+- Six additional helper assertions passed, including multiple sources and escalation priority over degradation: [results](evidence/pr108_helper_boundaries.json).
+- Normal UI → API browser flow now shows the sidebar thesis question, answer and `H26#5.3` source; the typed France question shows the Training Office escalation. D4-01/02/03 pass on this proposed head.
+- The thesis answer and source also render at 390 px. This was an actual chat flow, without seeded history.
+- 👍 saves rating 1 with the thesis answer's request ID and shows a toast, but its control remains visible immediately afterward. 👎 is still absent, so D4-05/F1 is not accepted.
+
+Evidence: [thesis answer](evidence/13-pr108-thesis-answer.png),
+[mobile answer](evidence/14-pr108-mobile-answer.png),
+[escalation](evidence/15-pr108-escalation.png),
+[feedback still visible](evidence/16-pr108-positive-feedback.png), and
+[preview metadata and database rows](evidence/pr108_preview.json).
+
+This is QA of the proposed integration, not a formal GitHub review of PR #108;
+the team assignment gives that review to Đăng. Recheck the final integrated head
+after #108 and F1 land. E.3 still needs the real outside tester.
