@@ -6,6 +6,12 @@
 - **Prompt used:** "Add a 'help' feature to the AssistantService to list what the bot can do. Recognize inputs like 'help' or 'what can you do?'. Return a list of features. Keep it simple and provide tests."
 - **Evaluation:** The AI effectively generated the core logic to detect help requests, but its implementation violated the service architecture. It modified `router.py` to directly return a plain text string instead of utilizing the required `Response` and `Intent` models. Additionally, the AI failed to update the `Intent` Enum in `models.py` to include `Intent.HELP`. I manually refactored the code to adhere to the Single Responsibility Principle by keeping only `Intent.HELP` in the router and moving the Markdown-formatted response generation into `service.py`. I also expanded the AI's single test case by using `@pytest.mark.parametrize` to ensure robustness against various phrasing. After these corrections, the test suite passed and the code met the architectural standards.
 
+## Lab 07 — L1 format_sources & L2 status_note
+- **Tool used:** Antigravity / Claude Opus 4.6 (Thinking)
+- **Purpose:** Implement `format_sources()` and `status_note()` helper functions in `ui/logic.py` for the Streamlit chat UI. L1 formats source citations for display under answers; L2 returns context-sensitive status messages for escalation and degraded-mode responses.
+- **Prompt used:** "Đây là phần mới nhất của bài tập lab - tuần 7. Hãy thực hiện lại các công việc giống như tuần 6… Việc cần làm đều có ở trong file pdf và file phân công."
+- **Evaluation:** The AI correctly identified Nhật's assignment from the phân công document (L1 & L2), read the PDF tutorial, the existing starter code with TODO markers, and the test expectations. The implementation followed the PDF specification exactly: `format_sources()` returns an empty string for no sources and joins `id — title` pairs otherwise; `status_note()` checks `escalate` first (Training Office message), then `degraded` (direct-source note), else `None`. All 7 tests in `test_ui.py` passed on first run. The AI set up the environment, created the branch, and prepared the commit — no manual code corrections were needed since the TODO comments already specified the exact strings and logic.
+
 ## Lab 06 — A1 Abstain / Escalation
 - **Tool used:** Antigravity / Claude 3.5 Sonnet
 - **Purpose:** Verify TODO A1 abstain and escalation logic before LLM execution in `RagAnswerer.answer()`, and design unit tests to verify that no LLM call is made when search produces no hits or scores below threshold.
