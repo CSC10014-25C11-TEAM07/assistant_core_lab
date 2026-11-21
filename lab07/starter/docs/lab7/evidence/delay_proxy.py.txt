@@ -1,0 +1,12 @@
+import asyncio
+import httpx
+from fastapi import FastAPI, Request
+from fastapi.responses import Response
+app=FastAPI()
+@app.api_route('/{path:path}', methods=['GET','POST'])
+async def proxy(path: str, request: Request):
+    if path == 'v1/chat':
+        await asyncio.sleep(3)
+    async with httpx.AsyncClient() as client:
+        result=await client.request(request.method, 'http://127.0.0.1:18007/'+path, content=await request.body(), headers={'content-type':'application/json'})
+    return Response(result.content,status_code=result.status_code,media_type='application/json')

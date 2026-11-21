@@ -1,0 +1,61 @@
+{
+  "empty_enter": {
+    "interaction_count_before": 0,
+    "interaction_count_after": 0
+  },
+  "long_input": {
+    "characters": 2001,
+    "interaction_count_before": 0,
+    "interaction_count_after": 0
+  },
+  "mobile_390": {
+    "viewport": [
+      390,
+      844
+    ],
+    "document_scroll_width": 390,
+    "input_bounds_x": [
+      17,
+      373
+    ],
+    "input_font_size_px": 16
+  },
+  "mobile_320": {
+    "viewport": [
+      320,
+      768
+    ],
+    "document_scroll_width": 320,
+    "input_right_px": 303
+  },
+  "thinking": {
+    "observed": true,
+    "harness": "Three-second forwarding delay on POST /v1/chat only; unmodified UI; real API on port 18007 behind proxy port 18008; delayed UI on 18508."
+  },
+  "integrity_detector": {
+    "command": "impeccable detect --json lab07/starter/ui/app.py",
+    "findings": [],
+    "limit": "Python source scan only; does not verify Streamlit-generated DOM."
+  },
+  "sidebar_caption": {
+    "foreground_rgb": [
+      163,
+      168,
+      184
+    ],
+    "background_rgb": [
+      240,
+      242,
+      246
+    ],
+    "font_size_px": 14,
+    "contrast_ratio": 2.117,
+    "method": "Computed styles of AI disclosure paragraph and first opaque ancestor, using relative luminance formula."
+  },
+  "backend_down": {
+    "banner_observed": true,
+    "question_error_observed": "Cannot reach the assistant. Is the backend running?",
+    "uncaught_exception": false,
+    "method": "Stop only the isolated API PID, open new UI session, submit Where is the library?."
+  }
+}

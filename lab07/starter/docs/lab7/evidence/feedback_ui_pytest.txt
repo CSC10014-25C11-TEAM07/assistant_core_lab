@@ -1,0 +1,89 @@
+F.FF                                                                     [100%]
+=================================== FAILURES ===================================
+______ test_both_answers_have_independent_positive_and_negative_controls _______
+
+feedback_app = (AppTest(
+    _script_path='/private/tmp/lab07-bao04-nwaybfn1/repo/lab07/starter/ui/app.py',
+    default_timeout=3,
+  ...or the handbook…')
+            }
+        )
+    }
+), <test_feedback_ui_acceptance.FeedbackClient object at 0x10c960920>)
+
+    def test_both_answers_have_independent_positive_and_negative_controls(feedback_app):
+        app, _client = feedback_app
+        assert len(feedback_buttons(app, "👍")) == 2
+>       assert len(feedback_buttons(app, "👎")) == 2
+E       AssertionError: assert 0 == 2
+E        +  where 0 = len([])
+E        +    where [] = feedback_buttons(AppTest(\n    _script_path='/private/tmp/lab07-bao04-nwaybfn1/repo/lab07/starter/ui/app.py',\n    default_timeout=3,\n   ...={\n                0: ChatInput(placeholder='Ask about fees, offices or the handbook…')\n            }\n        )\n    }\n), '👎')
+
+tests/test_feedback_ui_acceptance.py:52: AssertionError
+---------------------------- Captured stderr setup -----------------------------
+2026-11-21 16:00:15.748 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.748 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+_ test_successful_vote_targets_correct_answer_and_hides_on_next_render[\U0001f44e--1] _
+
+feedback_app = (AppTest(
+    _script_path='/private/tmp/lab07-bao04-nwaybfn1/repo/lab07/starter/ui/app.py',
+    default_timeout=3,
+  ...or the handbook…')
+            }
+        )
+    }
+), <test_feedback_ui_acceptance.FeedbackClient object at 0x10c9a6840>)
+label = '👎', rating = -1
+
+    @pytest.mark.parametrize(("label", "rating"), [("👍", 1), ("👎", -1)])
+    def test_successful_vote_targets_correct_answer_and_hides_on_next_render(feedback_app, label, rating):
+        app, client = feedback_app
+        controls = feedback_buttons(app, label)
+>       assert controls, f"Missing {label} control"
+E       AssertionError: Missing 👎 control
+E       assert []
+
+tests/test_feedback_ui_acceptance.py:62: AssertionError
+---------------------------- Captured stderr setup -----------------------------
+2026-11-21 16:00:15.808 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.809 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+_______ test_failed_feedback_preserves_retry_and_does_not_claim_success ________
+
+feedback_app = (AppTest(
+    _script_path='/private/tmp/lab07-bao04-nwaybfn1/repo/lab07/starter/ui/app.py',
+    default_timeout=3,
+  ...or the handbook…')
+            }
+        )
+    }
+), <test_feedback_ui_acceptance.FeedbackClient object at 0x10c8673e0>)
+
+    def test_failed_feedback_preserves_retry_and_does_not_claim_success(feedback_app):
+        app, client = feedback_app
+        client.accept_feedback = False
+        feedback_buttons(app, "👍")[0].click().run()
+        assert not app.exception
+        assert client.calls == [("answer-one", 1, None)]
+        actual = {
+            "marked_rated": "answer-one" in app.session_state["rated"],
+            "thanks_shown": any("Thanks" in toast.value for toast in app.toast),
+            "positive_controls": len(feedback_buttons(app, "👍")),
+        }
+>       assert actual == {"marked_rated": False, "thanks_shown": False, "positive_controls": 2}
+E       AssertionError: assert {'marked_rate..._shown': True} == {'marked_rate...shown': False}
+E
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'marked_rated': True} != {'marked_rated': False}
+E         {'thanks_shown': True} != {'thanks_shown': False}
+E         Use -v to get more diff
+
+tests/test_feedback_ui_acceptance.py:104: AssertionError
+---------------------------- Captured stderr setup -----------------------------
+2026-11-21 16:00:15.814 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-21 16:00:15.814 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+=========================== short test summary info ============================
+FAILED tests/test_feedback_ui_acceptance.py::test_both_answers_have_independent_positive_and_negative_controls
+FAILED tests/test_feedback_ui_acceptance.py::test_successful_vote_targets_correct_answer_and_hides_on_next_render[\U0001f44e--1]
+FAILED tests/test_feedback_ui_acceptance.py::test_failed_feedback_preserves_retry_and_does_not_claim_success
+3 failed, 1 passed in 0.16s
