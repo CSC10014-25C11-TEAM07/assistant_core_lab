@@ -1,0 +1,63 @@
+.FFF                                                                     [100%]
+=================================== FAILURES ===================================
+_______________________________ test_u2_greeting _______________________________
+
+    def test_u2_greeting():
+        at = app()
+        at.text_input[0].input("Lan").run()
+>       assert at.success[0].value == "Hello, Lan!"
+
+test_hello_streamlit.py:15:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = ElementList(), idx = 0
+
+    def __getitem__(self, idx: int | slice) -> El_co | ElementList[El_co]:
+        if isinstance(idx, slice):
+            return ElementList(self._list[idx])
+        else:
+>           return self._list[idx]
+E           IndexError: list index out of range
+
+../../../venv/lib/python3.12/site-packages/streamlit/testing/v1/element_tree.py:228: IndexError
+----------------------------- Captured stderr call -----------------------------
+2026-11-21 15:44:16.535 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+_______________________ test_u3_counter_survives_reruns ________________________
+
+    def test_u3_counter_survives_reruns():
+        at = app()
+        at.button[0].click().run()
+        at.button[0].click().run()
+>       assert "Clicked 2 times" in [m.value for m in at.markdown]
+E       AssertionError: assert 'Clicked 2 times' in ['This page is written in Python only — no HTML needed.', 'Clicked 0 times']
+
+test_hello_streamlit.py:22: AssertionError
+----------------------------- Captured stderr call -----------------------------
+2026-11-21 15:44:16.548 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+______________________________ test_u4_validation ______________________________
+
+    def test_u4_validation():
+        at = app()
+        at.number_input[0].set_value(32).run()
+>       assert "advisor approval" in at.error[0].value
+
+test_hello_streamlit.py:28:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = ElementList(), idx = 0
+
+    def __getitem__(self, idx: int | slice) -> El_co | ElementList[El_co]:
+        if isinstance(idx, slice):
+            return ElementList(self._list[idx])
+        else:
+>           return self._list[idx]
+E           IndexError: list index out of range
+
+../../../venv/lib/python3.12/site-packages/streamlit/testing/v1/element_tree.py:228: IndexError
+----------------------------- Captured stderr call -----------------------------
+2026-11-21 15:44:16.553 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+=========================== short test summary info ============================
+FAILED test_hello_streamlit.py::test_u2_greeting - IndexError: list index out...
+FAILED test_hello_streamlit.py::test_u3_counter_survives_reruns - AssertionEr...
+FAILED test_hello_streamlit.py::test_u4_validation - IndexError: list index o...
+3 failed, 1 passed in 0.12s

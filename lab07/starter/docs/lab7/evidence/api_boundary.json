@@ -1,0 +1,35 @@
+[
+  {
+    "question": "Can I register my thesis with 118 credits?",
+    "status": 200,
+    "response": {
+      "answer": "According to 5.3 Thesis registration: Students may register a thesis when they have at least 120 accumulated credits and a cumulative GPA of at least 2.0.",
+      "intent": "rule",
+      "sources": [
+        {
+          "id": "H26#5.3",
+          "title": "5.3 Thesis registration"
+        }
+      ],
+      "degraded": false,
+      "escalate": false,
+      "path": "llm",
+      "confidence": 0.7,
+      "request_id": "0f55309f9e5c"
+    }
+  },
+  {
+    "question": "What is the capital of France?",
+    "status": 200,
+    "response": {
+      "answer": "I'm not confident I can answer that from the official documents. Please contact the Training Office (room I.101) or ask your academic advisor.",
+      "intent": "unknown",
+      "sources": [],
+      "degraded": false,
+      "escalate": true,
+      "path": "abstain",
+      "confidence": 0.0,
+      "request_id": "c8cf2e5a7879"
+    }
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "pr": 108,
+  "head": "26ece656e25b34357c52c7908c92dc4444e1d576",
+  "main_at_test": "24333b963b1601b02e06acabb5261a5161e6fd3f",
+  "official_starter_tests_passed": 49,
+  "browser_cases": {
+    "sidebar_example": "PASS",
+    "thesis_answer_with_H26_5_3_source": "PASS",
+    "France_Training_Office_escalation": "PASS",
+    "mobile_390_thesis_source_rendering": "OBSERVED",
+    "positive_feedback": "Saved rating1 and thank-you toast, but both positive controls remain immediately after vote",
+    "negative_feedback": "Absent"
+  },
+  "database": {
+    "interactions": [
+      [
+        "5b48f4d9a508",
+        "rule",
+        "H26#5.3"
+      ],
+      [
+        "f676a9146527",
+        "unknown",
+        null
+      ]
+    ],
+    "feedback": [
+      [
+        "5b48f4d9a508",
+        1
+      ]
+    ]
+  },
+  "scope": "Unmodified PR108 checkout with real API and UI; no seeded-history harness. This does not establish merged-main acceptance."
+}

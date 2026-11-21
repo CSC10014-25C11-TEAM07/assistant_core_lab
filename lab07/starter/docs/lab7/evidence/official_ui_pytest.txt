@@ -1,0 +1,44 @@
+.....FF                                                                  [100%]
+=================================== FAILURES ===================================
+_____________________________ test_format_sources ______________________________
+
+    def test_format_sources():
+>       assert format_sources([]) == ""
+
+tests/test_ui.py:42:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+sources = []
+
+    def format_sources(sources: list[dict]) -> str:
+        """'Sources: H26#5.3 — 5.3 Thesis registration' or '' if none."""
+        # TODO L1 (3 lines): return "" if there are no sources, otherwise
+        #   "Sources: " + "; ".join(f"{s['id']} — {s['title']}" for s in sources)
+>       raise NotImplementedError("L1")
+E       NotImplementedError: L1
+
+ui/logic.py:26: NotImplementedError
+_______________________________ test_status_note _______________________________
+
+    def test_status_note():
+>       assert "Training Office" in status_note(ChatResult(ok=True, escalate=True))
+
+tests/test_ui.py:47:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+result = ChatResult(ok=True, answer='', intent='', sources=[], path='', escalate=True, degraded=False, request_id='', error='')
+
+    def status_note(result: ChatResult) -> str | None:
+        """A short note shown under the answer, explaining special situations."""
+        # TODO L2 (5 lines):
+        #   if result.escalate -> "I could not find this in the official documents. A staff member can help: Training Office, room I.101."
+        #   elif result.degraded -> "Shown directly from the source document (the AI helper was unavailable)."
+        #   else -> None
+>       raise NotImplementedError("L2")
+E       NotImplementedError: L2
+
+ui/logic.py:35: NotImplementedError
+=========================== short test summary info ============================
+FAILED tests/test_ui.py::test_format_sources - NotImplementedError: L1
+FAILED tests/test_ui.py::test_status_note - NotImplementedError: L2
+2 failed, 5 passed in 0.02s
