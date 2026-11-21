@@ -1,0 +1,19 @@
+{
+  "feedback_count_before": 0,
+  "feedback_count_after": 1,
+  "rows": [
+    [
+      "3692be4e8d19",
+      1
+    ]
+  ],
+  "after_backend_stopped_and_second_answer_clicked": {
+    "feedback_count": 1,
+    "rows": [
+      [
+        "3692be4e8d19",
+        1
+      ]
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "tested_commit": "24333b963b1601b02e06acabb5261a5161e6fd3f",
+  "date": "2026-11-21",
+  "os": "macOS-27.2.1-arm64-arm-64bit-Mach-O",
+  "api_url": "http://127.0.0.1:18007",
+  "ui_url": "http://127.0.0.1:18507",
+  "provider": "stub",
+  "viewports": [
+    [
+      1280,
+      900
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      320,
+      768
+    ]
+  ],
+  "browser": "Playwright CLI, Chrome headless; resized desktop viewport, no physical phone or touch gestures tested",
+  "log_normalization": "Only trailing whitespace was removed from pytest output."
+}

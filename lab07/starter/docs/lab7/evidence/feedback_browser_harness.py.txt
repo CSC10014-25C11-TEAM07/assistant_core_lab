@@ -1,0 +1,16 @@
+"""Diagnostic seeded-history harness, not an end-to-end chat test."""
+import os, runpy, sys
+from pathlib import Path
+import streamlit as st
+starter=Path(os.environ['QA_STARTER_DIR'])
+sys.path.insert(0,str(starter))
+from ui.api_client import AssistantClient
+if 'messages' not in st.session_state:
+    client=AssistantClient(os.environ['ASSISTANT_API_URL'])
+    messages=[{'role':'assistant','content':'Diagnostic seeded history: answers requested directly from the real API; L1/L2 display helpers bypassed.'}]
+    for question in ['Where is the library?', 'I lost my student card']:
+        result=client.ask(question,'bao04-feedback-diagnostic')
+        assert result.ok, result.error
+        messages.append({'role':'assistant','content':result.answer,'request_id':result.request_id})
+    st.session_state.messages=messages
+runpy.run_path(str(starter/'ui/app.py'),run_name='__main__')
