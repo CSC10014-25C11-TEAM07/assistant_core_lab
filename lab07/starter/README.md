@@ -1,16 +1,31 @@
 # Study Assistant (Lab 7 reference)
 
-## Setup
+## Setup and start both servers
+
+Open PowerShell in `lab07/starter`. Run setup once with Python 3.12.
+
+```powershell
+py -3.12 -m venv .venv
+& .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+& .\.venv\Scripts\python.exe -m pip install -e .
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 ```
-python -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\activate
-pip install -r requirements.txt && pip install -e .
-cp .env.example .env
+
+Open two terminals in `lab07/starter` and keep both running.
+
+In terminal 1, start the FastAPI backend. API docs are available at http://127.0.0.1:8000/docs.
+
+```powershell
+& .\.venv\Scripts\python.exe -m uvicorn assistant_api.main:create_app --factory
 ```
-## Run the API
+
+In terminal 2, start Streamlit and open http://localhost:8501 in your browser.
+
+```powershell
+& .\.venv\Scripts\python.exe -m streamlit run ui/app.py
 ```
-uvicorn assistant_api.main:create_app --factory --reload
-```
-Open http://127.0.0.1:8000/docs for the interactive OpenAPI documentation.
+
+The UI calls the backend over HTTP. If the API uses a different address, set `ASSISTANT_API_URL` in terminal 2 before starting Streamlit.
 
 ## API contract (v1)
 | Method | Path | Body | Success | Errors |
@@ -40,13 +55,6 @@ LLM_PROVIDER=ollama LLM_MODEL=llama3.2 python -m assistant_core "..."     # loca
 python eval/compare_paths.py                                              # deterministic vs retrieval vs LLM
 ```
 `/v1/chat` responses now include `path` (deterministic | retrieval | llm | tool | abstain), `escalate` and `confidence`.
-
-## User interface (Lab 7)
-Start the API first, then in a second terminal:
-```
-streamlit run ui/app.py            # opens http://localhost:8501
-```
-The UI talks to the backend only through HTTP (`ui/api_client.py`). Set `ASSISTANT_API_URL` if the API is not on port 8000.
 
 ## Tests
 ```
