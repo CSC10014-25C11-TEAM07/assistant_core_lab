@@ -1,23 +1,24 @@
-# Lab 6 — So sánh ba phương án trả lời
+# Lab 06 Path Comparison
 
-Kết quả từ `python eval/compare_paths.py` với BM25, ngưỡng 2.0 và LLM stub. Độ trễ tính bằng ms và làm tròn đến một chữ số thập phân.
+Bộ đánh giá gồm 20 câu hỏi, trong đó có 5 câu cần từ chối.
 
-| Phương án | Đúng | Từ chối đúng | p50 (ms) | Max (ms) | Câu chưa đạt |
-|---|---:|---:|---:|---:|---|
-| deterministic | 7/20 | 5/5 | 0.0 | 0.6 | E01, E02, E05–E15 |
-| retrieval | 16/20 | 4/5 | 0.0 | 0.0 | E13, E14, E15, E19 |
-| llm (stub) | 16/20 | 4/5 | 0.2 | 1.0 | E13, E14, E15, E19 |
+| Cách trả lời | Đúng | Từ chối đúng | p50 (ms) | Max (ms) |
+|---|---:|---:|---:|---:|
+| Deterministic | 7/20 | 5/5 | 0.0 | 0.6 |
+| Retrieval | 16/20 | 4/5 | 0.0 | 0.1 |
+| LLM (stub) | 16/20 | 4/5 | 0.2 | 0.6 |
 
-Mình chọn retrieval cho câu hỏi về sổ tay sinh viên. Trong lần chạy này, retrieval đúng 16/20 như LLM stub, trả lời bằng trích đoạn có nguồn và có độ trễ thấp hơn. Mình sẽ ưu tiên sửa E19 để trợ lý hỏi tên môn hoặc thể lệ của kỳ thi cụ thể trước khi kết luận bài thi có mở sách hay không.
+1. Mình chọn retrieval cho các câu hỏi về sổ tay sinh viên.
+2. Trong lần chạy này, retrieval đúng 16/20 câu, bằng LLM stub, và có thời gian phản hồi trung vị thấp hơn.
+3. Mình sẽ ưu tiên sửa E19 vì hệ thống vẫn trả lời câu hỏi về thi mở sách dù tài liệu truy xuất không đủ để kết luận.
+## H1 — Đánh giá sau khi thêm 5 câu
 
-## H1 — Chạy lại sau khi thêm năm câu
+Bộ đánh giá hiện có 25 câu, trong đó 7 câu cần từ chối.
 
-E21–E23 có mã nguồn đối chiếu từ kho tài liệu, còn E24–E25 yêu cầu từ chối vì ngoài phạm vi.
+| Cách trả lời | Đúng | Từ chối đúng | p50 (ms) | Max (ms) |
+|---|---:|---:|---:|---:|
+| Deterministic | 9/25 | 7/7 | 0.0 | 0.6 |
+| Retrieval | 20/25 | 6/7 | 0.0 | 0.1 |
+| LLM (stub) | 20/25 | 6/7 | 0.2 | 0.5 |
 
-| Phương án | Đúng | Từ chối đúng | p50 (ms) | Max (ms) | Câu chưa đạt trong H1 |
-|---|---:|---:|---:|---:|---|
-| deterministic | 9/25 | 7/7 | 0.0 | 0.4 | E21, E22, E23 |
-| retrieval | 20/25 | 6/7 | 0.0 | 0.1 | E23 |
-| llm (stub) | 20/25 | 6/7 | 0.2 | 0.5 | E23 |
-
-Deterministic không tra kho tài liệu cho E21–E22, còn E23 bị chuyển sang nhánh tính học phí ở cả ba phương án dù BM25 xếp đúng nguồn `F26#3` đầu tiên khi truy vấn trực tiếp.
+Trong 5 câu mới, E23 thất bại ở cả ba cách vì router chuyển câu hỏi về phí cấp lại thẻ sinh viên sang luồng tính học phí, nên trợ lý hỏi số tín chỉ thay vì lấy thông tin từ mục `S26#3`.

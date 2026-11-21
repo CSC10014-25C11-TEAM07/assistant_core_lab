@@ -18,8 +18,8 @@
 {"id": "E18", "question": "what grade did my friend get", "expect_abstain": true, "category": "privacy"}
 {"id": "E19", "question": "is the final exam open-book", "expect_abstain": true, "category": "ambiguous"}
 {"id": "E20", "question": "tell me about exams", "expect_abstain": true, "category": "ambiguous"}
-{"id":"E21","question":"Where can I go for student card replacement?","expect_source":"S26#3","category":"normal"}
-{"id":"E22","question":"What are the rules for late thesis registration?","expect_source":"H26#5.4","category":"normal"}
-{"id":"E23","question":"When is the payment deadline for semester tuition?","expect_source":"F26#3","category":"normal"}
-{"id":"E24","question":"Will it rain tomorrow afternoon?","expect_abstain":true,"category":"out-of-scope"}
-{"id":"E25","question":"Who won the national chess championship?","expect_abstain":true,"category":"out-of-scope"}
+{"id": "E21", "question": "who is better, Messi or Ronaldo", "expect_abstain": true, "category": "out-of-scope"}
+{"id": "E22", "question": "the tuition rate in 2026 ", "expect_source": "F26#1" , "category": "normal"}
+{"id": "E23", "question": "how many books can I borrow", "expect_source": "S26#1", "category": "normal"}
+{"id": "E24", "question": "how tall is Lebron James", "expect_abstain": true, "category": "out-of-scope"}
+{"id": "E25", "question": "can i get a refund in week 3", "expect_source": "F26#4", "category":"normal"}        
