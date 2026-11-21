@@ -73,6 +73,10 @@ answer the two questions; it does not demonstrate that the UI renders them.
 | 320 × 768 | Welcome and input fit. Document scroll width 320; input right edge 303. | Initial layout PASS; full flow pending |
 | E.3 external hallway test | Bao04 confirmed no outside tester has tried the page. No human observation has been invented. | PENDING — Bao04 |
 
+The [E.3 worksheet](../../../worksheets/e3_hallway_test_giabao1001.md) contains a
+two-minute procedure and blank observation record. Its rehearsal scenario is
+explicitly hypothetical and is not counted as participant evidence.
+
 Evidence: [long input](evidence/02-long-input.png),
 [waiting](evidence/04-thinking-delayed.png),
 [390 px](evidence/05-mobile-390.png),

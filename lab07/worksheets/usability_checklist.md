@@ -27,3 +27,5 @@ Part E.3's two-minute hallway test is **pending**: no outside tester or authenti
 observation is available, as confirmed by Bao04. Browser automation is not a
 substitute for that observation. H1's ten-minute test belongs to Tân in the team
 assignment and is tracked separately in `user_test_observations.md`.
+The [E.3 worksheet](e3_hallway_test_giabao1001.md) provides the procedure, a blank
+session record and a clearly labeled hypothetical rehearsal scenario.
