@@ -113,3 +113,29 @@ def test_failed_feedback_preserves_retry_and_does_not_claim_success(feedback_app
     assert any("Thanks" in toast.value for toast in app.toast)
     app.run()
     assert not [button for button in app.chat_message[1].button if button.label in {"👍", "👎"}]
+
+
+@pytest.mark.parametrize(
+    ("label", "message"),
+    [
+        ("👍", "Thanks for your feedback!"),
+        ("👎", "Thanks — we will look at this answer."),
+    ],
+)
+def test_success_notice_is_carried_through_rerun(feedback_app, monkeypatch, label, message):
+    import streamlit as st
+
+    app, _client = feedback_app
+    pending_notices = []
+    rerun = st.rerun
+
+    def observe_rerun(*args, **kwargs):
+        pending_notices.append(st.session_state.get("feedback_notice"))
+        return rerun(*args, **kwargs)
+
+    monkeypatch.setattr(st, "rerun", observe_rerun)
+    feedback_buttons(app, label)[0].click().run()
+    assert not app.exception
+    assert pending_notices == [message]
+    assert "feedback_notice" not in app.session_state
+    assert any(toast.value == message for toast in app.toast)
