@@ -50,16 +50,21 @@ for i, m in enumerate(st.session_state.messages):
             st.info(m["note"])
         rid = m.get("request_id")
         if rid and rid not in st.session_state.rated:
+            comment = ""
+            if st.button("Add a comment before rating (optional)", key=f"add_comment{i}"):
+                m["comment_open"] = True
+            if m.get("comment_open"):
+                comment = st.text_area("What worked or was missing?", max_chars=500, key=f"comment{i}")
             c1, c2, _ = st.columns([1, 1, 6])
             if c1.button("👍", key=f"up{i}"):
-                if client.send_feedback(rid, 1):
+                if client.send_feedback(rid, 1, comment.strip() or None):
                     st.session_state.rated.add(rid)
                     st.session_state.feedback_notice = "Thanks for your feedback!"
                     st.rerun()
                 else:
                     st.error("Could not save your feedback. Please try again.")
             if c2.button("👎", key=f"down{i}"):
-                if client.send_feedback(rid, -1):
+                if client.send_feedback(rid, -1, comment.strip() or None):
                     st.session_state.rated.add(rid)
                     st.session_state.feedback_notice = "Thanks — we will look at this answer."
                     st.rerun()
