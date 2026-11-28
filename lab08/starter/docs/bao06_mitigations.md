@@ -33,10 +33,10 @@ Nhật's G1 work is still needed for the two missing prompt-injection patterns a
 
 ## H2 — Two-sentence reflection
 
-Em chưa nghĩ đến việc một đoạn tài liệu được truy xuất có thể chứa chỉ thị ẩn, dụ mô hình bỏ qua yêu cầu của người dùng và bịa mã trích dẫn để làm câu trả lời sai trông đáng tin.
-Lớp grounding check trong parse_draft() sẽ chặn câu trả lời có mã nguồn ngoài allowed_ids bằng ProviderError, sau đó RagAnswerer thử lại và dùng trích đoạn nguồn đã truy xuất nếu đầu ra vẫn không hợp lệ.
+Một tài liệu trong kho RAG có thể chèn chỉ thị yêu cầu mô hình bỏ qua quy tắc và đưa nội dung cuộc trò chuyện vào liên kết ngoài, khiến câu trả lời bị thao túng dù người dùng chỉ hỏi về học vụ.
+Em đề xuất đánh dấu và tách nội dung truy xuất thành dữ liệu không đáng tin, giới hạn quyền gọi công cụ bằng code và kiểm tra cấu trúc đầu ra, mã nguồn cùng miền liên kết được phép, sau đó dùng pytest để giữ lại ca tấn công và ca đối chứng thành regression test.
 
-Reading references are [pytest Get Started](https://docs.pytest.org/en/stable/getting-started.html) and [OWASP LLM01 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/).
+Reading references are [pytest Get Started](https://docs.pytest.org/en/stable/getting-started.html) and [OWASP LLM01 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/). These H2 defenses are proposals; this PR does not claim to implement an indirect-injection defense.
 
 ## Reproduce
 
