@@ -8,7 +8,7 @@ import time
 from assistant_core.config import Settings
 from assistant_core.errors import InvalidRequest, ProviderError
 from assistant_core.guard import INJECTION_REPLY, PRIVATE_REPLY, is_private_request, looks_like_injection
-from assistant_core.knowledge import Handbook, OfficeDirectory
+from assistant_core.knowledge import Handbook, OfficeDirectory, thesis_credit_shortfall
 from assistant_core.llm import make_llm
 from assistant_core.models import Intent, Message, Response, Source
 from assistant_core.rag.answerer import RagAnswerer
@@ -83,6 +83,14 @@ class AssistantService:
         if rule is None:
             return Response(answer="Sorry, I don't know that yet.", intent=Intent.UNKNOWN)
         sources = [Source(id=rule.id, title=rule.title)]
+        shortfall = thesis_credit_shortfall(text, rule.text)
+        if shortfall:
+            return Response(
+                answer=f"{shortfall} {rule.text}",
+                intent=Intent.RULE,
+                sources=sources,
+                path="retrieval",
+            )
         try:
             return Response(answer=self.responder.explain(text, rule), intent=Intent.RULE, sources=sources)
         except ProviderError:

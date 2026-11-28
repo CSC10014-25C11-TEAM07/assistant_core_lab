@@ -68,3 +68,20 @@ class Handbook:
             if score > best_score:
                 best, best_score = rule, score
         return best if best_score >= min_score else None
+
+
+def thesis_credit_shortfall(question: str, rule_text: str) -> str | None:
+    """Explain an integer credit shortfall using the cited thesis rule."""
+    if "register a thesis" not in rule_text.lower():
+        return None
+    current = re.search(r"(?<![\w.-])(\d+)\s+(?:accumulated\s+)?credits\b", question, re.I)
+    minimum = re.search(r"at least (\d+) (?:accumulated )?credits\b", rule_text, re.I)
+    if not current or not minimum:
+        return None
+    credits, required = int(current.group(1)), int(minimum.group(1))
+    if credits >= required:
+        return None
+    return (
+        f"Your {credits} credits are below the {required}-credit minimum, "
+        f"so you are {required - credits} credits short of the thesis registration requirement."
+    )

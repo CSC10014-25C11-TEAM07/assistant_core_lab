@@ -48,7 +48,11 @@ def test_validate_input():
 
 def test_format_sources():
     assert format_sources([]) == ""
-    assert format_sources(OK["sources"]) == "Sources: S26#1 — 1 Library borrowing"
+    assert format_sources(OK["sources"]) == (
+        "Sources: [S26#1 — 1 Library borrowing]"
+        "(https://github.com/CSC10014-25C11-TEAM07/assistant_core_lab/"
+        "blob/main/lab08/starter/data/kb/services_2026.md#1-library-borrowing)"
+    )
 
 
 def test_status_note():
