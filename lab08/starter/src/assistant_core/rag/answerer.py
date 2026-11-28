@@ -12,6 +12,7 @@ import logging
 from collections.abc import Callable
 
 from assistant_core.errors import InvalidRequest, ProviderError
+from assistant_core.knowledge import thesis_credit_shortfall
 from assistant_core.llm import LLM, AnswerDraft, build_prompt, parse_draft
 from assistant_core.models import Intent, Response, Source
 from assistant_core.rag.index import Index
@@ -43,6 +44,14 @@ class RagAnswerer:
             return Response(answer=ESCALATE_MSG, intent=Intent.UNKNOWN, path="abstain", escalate=True, confidence=0.0)
         sources = {h.chunk.id: Source(id=h.chunk.id, title=h.chunk.title) for h in hits}
         top = hits[0].chunk
+        shortfall = thesis_credit_shortfall(question, top.text)
+        if shortfall:
+            return Response(
+                answer=f"{shortfall} {top.text}",
+                intent=Intent.RULE,
+                sources=[sources[top.id]],
+                path="retrieval",
+            )
         if self.llm is None:  # retrieval-only baseline
             return Response(
                 answer=f"{top.title}: {top.text}",
